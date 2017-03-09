@@ -1,0 +1,49 @@
+.row
+  .box.col-md-12
+    .cell
+      Strong Search For Me Info
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              | ID
+            th
+              | Name
+            th
+              | Boroughs
+            th
+              | Beds
+            th
+              | Baths
+            th
+              | Budget
+            th
+              | Move-in date
+            th
+              | Employed?
+            th
+              | Subway
+            th
+              | WeChat
+            th
+              | Email
+            th
+              | Referral
+        tbody
+          -@form.each do |form|
+            tr
+              td = form.id
+              td = form.name
+              td = form.boroughs.join(",")
+              td = form.beds
+              td = form.baths
+              td = form.budget
+              td = form.move_in_date
+              td = form.is_employed ? "Employed":"Student"
+              td = form.transportation.join(",")
+              td = form.wechat
+              td = form.email
+              td = form.referral
+      = paginate @form

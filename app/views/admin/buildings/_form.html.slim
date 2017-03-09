@@ -1,0 +1,44 @@
+= form_for [:admin, @building] do |f|
+  - if @building.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@building.errors.count, "error")} prohibited this admin_building from being saved:"
+      ul
+        - @building.errors.full_messages.each do |message|
+          li = message
+  .field
+    = f.label :city
+    = f.text_field :city, readonly: !@building.new_record?
+
+  .field
+    = f.label :borough
+    = f.select :borough, Building.boroughs, readonly: !@building.new_record?
+
+  .field
+    = f.label :building_name
+    = f.text_field :name
+
+  .field
+    = f.label :address
+    = f.text_field :address, readonly: !@building.custom? && !@building.new_record?
+
+  .field
+    = f.label :year_built
+    = f.text_field :year_built
+
+  .field
+    = f.label :floors
+    = f.text_field :floors
+  .field
+    = f.label :units_total
+    = f.text_field :units_total
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :amenities
+    = f.text_area :amenities, value: @building.amenities.join(', ')
+    | eg: Doorman, Elevator,Commonroofdeck
+  .field
+    = label_tag :related_listing_ids
+    = text_area_tag :related_listing_ids, @building.listings.pluck(:id).join(','), readonly: @building.new_record?
+  .actions = f.submit 'Save'

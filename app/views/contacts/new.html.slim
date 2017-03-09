@@ -1,0 +1,35 @@
+= content_for :footer_script do
+	= google_maps_script('Maps.Contact')
+
+#contact.global-container
+  #contact-googlemap-img
+    / 147 Prince Street #17 Brooklyn, NY 11201
+    #js-contact data ={address: '147 Prince Street #17 Brooklyn, NY 11201', lat: '40.6927873', lng: '-73.9821664'}
+    #map-canvas
+  .container
+    = flash[:notice]
+    h2.contact-title Contact Us
+    .row
+      #contact-form.col-md-7
+        == render 'form'
+      .sidebar.col-md-4.col-md-offset-1
+        .contact-misc
+          h4.misc-title We’d Love to Hear From You
+          p Feel free to send us comments and questions. We will get back to you as soon as we can.
+          p.address
+            | 147 Prince Street #17
+            br
+            | Brooklyn, NY 11201
+          a.email-link href="mailto:contact@cityspade.com" contact@cityspade.com
+          a.phone href="tel:+1-929-279-8012" (929) 279-8012
+        .contact-links
+          h4 Other contact links
+          ul
+            li
+              a.btn-sm.icons-facebook href="#{Settings.external_links.facebook}" facebook
+            li
+              a.btn-sm.icons-twitter href="#{Settings.external_links.twitter}" twitter
+            li
+              a.btn-sm.icons-google href="https://plus.google.com/106599793068250194090/" google
+            /li
+            /  a.btn-sm.icons-flicker href="http://www.google.com/" flicker

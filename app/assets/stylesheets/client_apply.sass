@@ -1,0 +1,83 @@
+@import 'modules'
+
+#client_apply
+  padding-left: 14%
+  padding-right: 14%
+  @media (min-width: 1400px)
+    padding-left: 12%
+    padding-right: 12%
+  @media (max-width: 1200px)
+    padding-left: 4%
+    padding-right: 4%
+    
+  h1
+    color: $link-color
+    text-align: center
+  .language
+    text-align: right
+    font-weight: bold
+  form
+    h3
+      text-align: left
+      font-weight: bold
+      margin-top: 35px
+    label
+      font-size: 17px
+    input
+      border-radius: 4px
+      font-size: 17px
+      font-family: Avenir
+    #pet-fields
+      display: none
+    .radios
+      text-align: center
+      font-family: Avenir
+      font-size: 17px
+      font-weight: bold
+      input
+        margin-right: 20px
+
+    .form-group
+      margin-bottom: 15px
+      label.error
+        font-size: 14px
+        font-weight: normal
+        width: 100%
+        text-align: left
+        @media (max-width: 768px)
+          text-align: center
+      .small-ip
+        width: 220px
+        @media (max-width: 768px)
+          margin: 0 auto
+    .submit-btn
+      text-align: center
+      margin-top: 50px
+      margin-bottom: 30px
+      p
+        font-size: 13px
+        text-align: left
+        font-family: Avenir
+      input[type="submit"]
+        color: white
+        background: #2fcdc9
+        font-size: 20px
+        padding: 10px
+        font-family: Avenir
+        text-shadow: none
+  .form-horizontal
+    label
+      width: 40%
+      @media (max-width: 768px)
+        width: 100%
+        text-align: center
+
+
+#client-apply-conf
+  text-align: center
+  padding-top: 100px
+  padding-bottom: 100px
+  h1
+    font-size: 50px
+    color: $link-color
+

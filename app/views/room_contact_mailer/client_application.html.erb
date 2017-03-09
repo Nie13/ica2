@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+</head>
+<body>
+<div class="container">
+  <h3> Basic Info: </h3>
+  <p>First Name: <%= @info[:fname] %></p>
+  <p>Last Name: <%= @info[:lname] %></p>
+  <p>Date of Birth: <%= @info[:dob] %></p>
+  <p>SSN: <%= @info[:ssn] %></p>
+  <p>phone: <%= @info[:phone] %></p>
+  <p>email: <%= @info[:email] %></p>
+  <p>building: <%= @info[:building] %></p>
+  <p>unit: <%= @info[:unit] %></p>
+  <h3> Current Address: </h3>
+  <p>Street: <%= @info[:street] %></p>
+  <p>City: <%= @info[:city] %></p>
+  <p>State: <%= @info[:state] %></p>
+  <p>Country: <%= @info[:country] %></p>
+  <p>Landlord: <%= @info[:landlord] %></p>
+  <p>Landlord phone: <%= @info[:lordphone] %></p>
+  <p>Current rent/month: <%= @info[:rent] %></p>
+  <h3> Income Source: </h3>
+  <p>Position: <%= @info[:position] %></p>
+  <p>Company / School: <%= @info[:company] %></p>
+  <p>Start date: <%= @info[:startdate] %></p>
+  <p>Salary: <%= @info[:salary] %></p>
+  <h3> Pets: </h3>
+  <p>Pets? <%= @info[:qpets] %></p>
+  <% if @info[:qpets] == "Yes" %>
+    <p>Type: <%= @info[:type] %></p>
+    <p>Breed: <%= @info[:breed] %></p>
+    <p>Name: <%= @info[:name] %></p>
+    <p>Age: <%= @info[:age] %></p>
+    <p>Weight: <%= @info[:weight] %></p>
+  <% end %>
+  <h3> Emergency Contact: </h3>
+  <p>Name: <%= @info[:ename] %></p>
+  <p>Address: <%= @info[:eaddr] %></p>
+  <p>Phone: <%= @info[:ephone] %></p>
+  <p>Relationship: <%= @info[:erel] %></p>
+  <p><strong>How did you hear about us? <%= @info[:add_info] %></strong></p>
+</div>

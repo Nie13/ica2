@@ -1,0 +1,57 @@
+section#sp-banner-wrapper
+  .row#banner
+    .hidden-sm
+      .banner-bg.listing-banner-bg style="height:160px;"
+
+.container
+  .row#agent-container.clearfix
+    .agent-info-container
+      .agent-info
+        .agent-avatar
+          = image_tag @agent.avatar_url('80x80'), class: 'circle', alt: @agent.img_alt, title: @agent.img_alt
+        .agent-name
+          = @agent.name
+        .agent-broker-name
+          = @agent.full_broker_name
+        .agent-contact
+          .agent-tel
+            i.fa.fa-phone
+            a href="tel:#{@agent.tel}"
+            - if !@agent.tel.nil?
+              = display_tel(@agent.tel)
+          .agent-email
+            i.fa.fa-envelope-o
+            a href="mailto:#{@agent.email}"
+              = @agent.email
+      .agent-remark
+        h3
+          = @agent.about_title || 'About me'
+        div
+          == short_remark(@agent)
+
+
+    .agent-listings-container
+      h3
+        | Available Listings
+      .agent-listings
+        - @listings.each do |listing|
+          .agent-listing.row
+            .col-md-4
+              = link_to listing  do
+                .pull-left.listing-flag
+                  = flag_and_reviews_count(listing)
+                = image_tag listing_image_url(listing), class: 'agent-listing-img'
+            .col-md-5
+              h3
+                = link_to listing.display_title, listing
+              span
+                = listing.area_zipcode
+              span.bed-bath
+                = display_beds(listing)
+                |,
+                '
+                = display_baths(listing)
+            .col-md-3
+              span.price
+                = number_to_currency(listing.price, precision: 0)
+        = paginate @listings,  window: 3

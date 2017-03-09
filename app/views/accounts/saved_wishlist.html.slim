@@ -1,0 +1,7 @@
+#profile.global-container.row
+  .container
+    h1.title My Saved Wishlist
+    .row
+      = render partial: '/accounts/sidebar'
+      = render partial: 'wishlist', locals: { listings: @listings } 
+

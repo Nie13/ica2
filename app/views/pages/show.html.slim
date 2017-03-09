@@ -1,0 +1,13 @@
+.staticpage.global-container class=(params[:id])
+  .container
+  	.text-container
+      h1.title
+        = @page.name
+      .content
+        = raw @page.content
+      - if current_account.present? and not current_account.role?(:user)
+        = link_to 'Edit', edit_page_path(@page)
+        '|
+        = link_to 'Edit Raw', edit_page_path(@page, direct_edit: true)
+        '|
+        = link_to 'Back', pages_path

@@ -1,0 +1,19 @@
+## 手机 PC 公用 js
+#= require jquery
+#= require jquery_ujs
+#= require jquery-ui
+#= require bootstrap
+#= require jquery.autocomplete
+#= require jquery.multiple.select
+#= require selectize
+#= require jquery.validate
+#= require fancybox
+#= require pickadate/picker
+#= require pickadate/picker.date
+#= require pickadate/picker.time
+#= require chosen.jquery
+#= require common/base
+#= require jquery.infinite-pages
+#= require jquery.cookie
+#= require cocoon
+#= require_tree ./common

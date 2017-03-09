@@ -1,0 +1,21 @@
+# See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
+# To ban all spiders from the entire site uncomment the next two lines:
+User-agent: *
+Disallow: /mls/
+Disallow: /*/*/collect
+Disallow: /*/*/uncollect
+Disallow: /search/for-sales
+Disallow: /search/for-rentals
+Disallow: /search/*/*?sort=price
+Disallow: /search/*/*?sort=transport
+Disallow: /search/*/*?*sort=price
+Disallow: /search/*/*?*sort=transport
+Disallow: /search/*/for-sales
+Disallow: /search/*/for-rentals
+Disallow: /reviews/photos
+Disallow: /reviews/new?review_id=*
+Disallow: /listings/nearby_venue.js?*ll=*
+Disallow: /listings/nearby_venues.js?lat=*&lng=*
+Disallow: /reviews.js*
+Disallow: /api/
+Sitemap: https://www.cityspade.com/sitemap.xml

@@ -1,0 +1,68 @@
+- home_transparent = current_page?(root_path) ? "transparent-nav" : ""
+- logo_file = current_page?(root_path) ? "logo/B-City-logo2.png" : "logo/City-logo2.png"
+
+nav.navbar.navbar-static-top class="#{home_transparent}"
+  .container-fluid
+    .navbar-header
+      button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-Navbar"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to root_path do
+        = image_tag logo_file, height: "50px", class: "city_logo hidden-xs"
+        = image_tag "logo/B-City-logo2.png", height: "50px", class:"city_logo visible-xs"
+
+    .collapse.navbar-collapse#main-Navbar
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown.auto-drop.hidden-xs
+          a.dropdown-toggle.current-area href='#' data-toggle="dropdown"
+            | #{current_area.short_name.titleize}
+            span.glyphicon.glyphicon-triangle-bottom
+          ul.dropdown-menu
+            li
+              = link_to "zone 1", root_path(current_area: 'new-york')
+            li
+              = link_to "zone 2", root_path(current_area: 'philadelphia')
+            li
+              = link_to "zone 3", root_path(current_area: 'boston')
+            li
+              = link_to "zone 4", root_path(current_area: 'chicago')
+        li
+          = link_to "hura", reviews_path, class: 'nav-button'
+        li
+          = link_to open_houses_path, class: 'nav-button' do
+            | Open Houses
+        li
+          = link_to "companys", roomsearch_path, class: 'nav-button'
+        li
+          = link_to "DD", flashsales_path, class: 'nav-button visible-xs'
+
+        - if current_account.nil?
+          li
+            //a.sign-in href=new_session_path(resource_name)
+            a.sign-in href='#' data-toggle="modal" data-target= "#sign_in"
+              span
+                span Sign in
+        - else
+          li.dropdown.auto-drop.hidden-xs
+            a.dropdown-toggle href='#' data-toggle="dropdown"
+              = image_tag current_account.small_image_url,
+                  class: 'circle avatar-40',
+                  alt: current_account.name,
+                  title: current_account.name
+            ul.dropdown-menu
+              li
+                a href=account_saved_wishlist_path(flag: Settings.listing_flags.rental)
+                  | Wishlist
+              li
+                a href=edit_account_path
+                  | Account Settings
+              li
+                a href=destroy_account_session_path  data-method='delete'
+                  | Logout
+          li.visible-xs
+            a href=edit_account_path
+              | Account
+          li.visible-xs
+            a href=destroy_account_session_path  data-method='delete'
+              | Logout

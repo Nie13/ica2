@@ -1,0 +1,11 @@
+.container#client_apply
+  .language
+    | Language: 
+    = link_to_unless_current "English", locale: "en"
+    |  | 
+    = link_to_unless_current "Chinese", locale: "ch" 
+  h1 = t ".apply"
+  = render 'form'
+
+javascript: 
+  App.ClientCheckin();

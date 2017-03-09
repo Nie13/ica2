@@ -1,0 +1,177 @@
+= form_tag apply_create_path, class: 'form-horizontal', id: 'client_apply_form'
+  h3 = t ".basic"
+  
+  .form-group
+    = label_tag 'fname', t(".fname"), class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'fname', nil, class: 'form-control', required: true
+  
+  
+  .form-group
+    = label_tag 'lname', t(".lname"), class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'lname', nil, class: 'form-control', required: true
+  
+  
+  .form-group
+    = label_tag 'dob', t(".dob"), class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'dob', nil, class: 'form-control date-format', placeholder: t(".date_place"), required: true
+  
+  
+  .form-group
+    = label_tag 'phone', t(".phone"), class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'phone', nil, class: 'form-control', required: true
+  
+  
+  .form-group
+    = label_tag 'email', t(".email"), class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'email', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'ssn', t(".ssn"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'ssn', nil, class: 'form-control', required: true, placeholder: t(".ssn_place")
+  
+  .form-group
+    = label_tag 'building', t(".building"), class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'building', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'unit', t(".unit"), class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'unit', nil, class: 'form-control', required: true
+
+  h3 = t ".addr"
+
+  /.form-inline 
+  .form-group
+    =label_tag 'street', t(".street"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'street', nil, class: 'form-control small-ip', required: true
+  
+  .form-group
+    =label_tag 'city', t(".city"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'city', nil, class: 'form-control small-ip', required: true
+  /.form-inline
+  .form-group
+    =label_tag 'state', t(".state"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'state', nil, class: 'form-control small-ip', required: true
+  .form-group
+    =label_tag 'country', t(".country"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'country', nil, class: 'form-control small-ip', required: true
+  
+  .form-group
+    = label_tag 'landlord', t(".landlord"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'landlord', nil, class: 'form-control', required: true, placeholder: t(".landlord_place")
+  
+  .form-group
+    = label_tag 'lordphone', t(".lordphone"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'lordphone', nil, class: 'form-control', required: true
+
+  .form-group
+    = label_tag 'rent', t(".rent"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'rent', nil, class: 'form-control', required: true, placeholder: t(".rent_place")
+
+  h3 = t ".income"
+  
+  .form-group
+    = label_tag 'position', t(".position"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'position', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'company', t(".company"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'company', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'startdate', t(".startdate"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'startdate', nil, class: 'form-control date-format', required: true, placeholder: t(".date_place")
+  
+  .form-group
+    = label_tag 'salary', t(".salary"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'salary', nil, class: 'form-control', required: true
+
+  h3 = t ".pets"
+
+  .form-group
+    = label_tag 'qpets', t(".qpets"), class: 'col-sm-6'
+    .col-sm-3.col-xs-6.radios
+        = radio_button_tag 'qpets', 'Yes'
+        = t(".yes_opt")
+    .col-sm-3.col-xs-6.radios
+        = radio_button_tag 'qpets', 'No'
+        = t(".no_opt")
+    
+  fieldset#pet-fields
+    .form-group
+      = label_tag 'type', t(".if_yes"), class: 'col-sm-6'
+      .col-sm-3.col-xs-6.radios
+        = radio_button_tag 'type', t(".dog")
+        = t(".dog")
+      .col-sm-3.col-xs-6.radios
+        = radio_button_tag 'type', t(".cat")
+        = t(".cat")
+
+    .form-group
+      =label_tag 'breed', t(".breed"),class: 'col-sm-6'
+      .col-sm-6
+        = text_field_tag 'breed', nil, class: 'form-control small-ip', required: true
+    
+    .form-group
+      =label_tag 'name', t(".name"),class: 'col-sm-6'
+      .col-sm-6
+        = text_field_tag 'name', nil, class: 'form-control small-ip', required: true
+    .form-group
+      =label_tag 'age', t(".age"),class: 'col-sm-6'
+      .col-sm-6
+        = text_field_tag 'age', nil, class: 'form-control small-ip', required: true
+    
+    .form-group
+      =label_tag 'weight', t(".weight"),class: 'col-sm-6'
+      .col-sm-6
+        = text_field_tag 'weight', nil, class: 'form-control small-ip', required: true
+
+  h3 = t ".emergency"
+  
+  .form-group
+    = label_tag 'ename', t(".ename"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'ename', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'eaddr', t(".eaddr"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'eaddr', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'ephone', t(".ephone"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'ephone', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'erel', t(".erel"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'erel', nil, class: 'form-control', required: true
+  
+  .form-group
+    = label_tag 'add_info', t(".add_info"),class: 'col-sm-6'
+    .col-sm-6
+      = text_field_tag 'add_info', nil, class: 'form-control', required: true
+
+  .submit-btn
+    p 
+      | ***All information provided to CitySpade is confidential. By filling out this application form, you agree to allow CitySpade to register you as a client with buildings that best fit your needs.
+    = submit_tag t(".submit"), class: "btn btn-default"

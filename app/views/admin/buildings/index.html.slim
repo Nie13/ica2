@@ -1,0 +1,56 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_buildings_path, method: :get do
+       .field.fieldset.center
+          legend
+            | Buildings
+          .input-text.triple-input
+            = select_tag :city, options_for_select(Building.cities, params[:city]), placeholder: "city", class: "col-md-2", include_blank: true
+            = select_tag :borough, options_for_select(Building.boroughs, params[:borough]), placeholder: "Borough", class: "col-md-2", include_blank: true
+            = text_field_tag :street_number, params[:street_number], placeholder: "Street Number", class: "list-inline"
+            = text_field_tag :street_name, params[:street_name], placeholder: "Street Name", class: "list-inline"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Buildings
+      | &nbsp;&nbsp;
+      = link_to 'New', new_admin_building_path
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable 'id', 'ID'
+            th
+              = sortable "city", "City"
+            th
+              = sortable "borough", "Brough"
+            th
+              = sortable "address", "Address"
+            th Year Built
+            th Floors
+            th Units
+            th Address Translator
+            th
+
+        tbody
+          - @buildings.each do |building|
+            tr
+              th = building.id
+              td = building.city
+              th = building.borough
+              th = building.address
+              td = building.year_built
+              td = building.floors
+              td = building.units
+              td
+                = link_to building.address_translator_url, target: :_blank do
+                  i.fa.fa-external-link
+              th
+                = link_to 'Edit', edit_admin_building_path(building)
+      = paginate @buildings
+
