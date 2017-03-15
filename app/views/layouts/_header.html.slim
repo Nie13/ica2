@@ -14,37 +14,19 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
 
     .collapse.navbar-collapse#main-Navbar
       ul.nav.navbar-nav.navbar-right
-        li.dropdown.auto-drop.hidden-xs
-          a.dropdown-toggle.current-area href='#' data-toggle="dropdown"
-            | #{current_area.short_name.titleize}
-            span.glyphicon.glyphicon-triangle-bottom
-          ul.dropdown-menu
-            li
-              = link_to "zone 1", root_path(current_area: 'new-york')
-            li
-              = link_to "zone 2", root_path(current_area: 'philadelphia')
-            li
-              = link_to "zone 3", root_path(current_area: 'boston')
-            li
-              = link_to "zone 4", root_path(current_area: 'chicago')
         li
-          = link_to "hura", reviews_path, class: 'nav-button'
-        li
-          = link_to open_houses_path, class: 'nav-button' do
-            | Open Houses
-        li
-          = link_to "companys", roomsearch_path, class: 'nav-button'
-        li
-          = link_to "DD", flashsales_path, class: 'nav-button visible-xs'
+          = link_to "联系我们", roomsearch_path, class: 'nav-button'
 
         - if current_account.nil?
           li
             //a.sign-in href=new_session_path(resource_name)
             a.sign-in href='#' data-toggle="modal" data-target= "#sign_in"
               span
-                span Sign in
+                span 登录
         - else
           li.dropdown.auto-drop.hidden-xs
+            span
+              span 您好
             a.dropdown-toggle href='#' data-toggle="dropdown"
               = image_tag current_account.small_image_url,
                   class: 'circle avatar-40',
@@ -66,3 +48,26 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
           li.visible-xs
             a href=destroy_account_session_path  data-method='delete'
               | Logout
+
+/        li.dropdown.auto-drop.hidden-xs
+/          a.dropdown-toggle.current-area href='#' data-toggle="dropdown"
+/            | #{current_area.short_name.titleize}
+/            span.glyphicon.glyphicon-triangle-bottom
+/          ul.dropdown-menu
+/            li
+/              = link_to "zone 1", root_path(current_area: 'new-york')
+/            li
+/              = link_to "zone 2", root_path(current_area: 'philadelphia')
+/            li
+/              = link_to "zone 3", root_path(current_area: 'boston')
+/            li
+/              = link_to "zone 4", root_path(current_area: 'chicago')
+/        li
+/          = link_to "hura", reviews_path, class: 'nav-button'
+/        li
+/          = link_to open_houses_path, class: 'nav-button' do
+/            | Open Houses
+
+
+/        li
+/          = link_to "DD", flashsales_path, class: 'nav-button visible-xs'

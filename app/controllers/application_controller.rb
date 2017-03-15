@@ -285,9 +285,9 @@ class ApplicationController < ActionController::Base
       else
         city_name = current_area.long_name
       end
-      @page_title = 'CitySpade: Apartments for Rent, Building and Neighborhood Reviews, Sublets and Rommates'
-      @page_description = 'Make smarter rental decisions through our building and neighborhood reviews. Let CitySpade connect you with your next dream apartment.'
-      @page_keywords = "CitySpade, apartments, buildings, neighborhoods, reviews, NO FEE apartments, apartments for rent, #{city_name} apartments, sublets, room, roommates"
+      @page_title = 'I-CARE Page Title Change Latter'
+      @page_description = 'I-CARE page description'
+      @page_keywords = "I-CARE page keywords"
     when 'search'
       if action_name == 'index'
         title = params[:title] || search_neighborhood_name

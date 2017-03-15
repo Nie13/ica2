@@ -5,38 +5,41 @@ footer#sp-footer-wrapper class="#{(action_name == 'map' && controller_name == 's
         = link_to root_path do
           = image_tag "logo/B-City-logo2.png"
         p
-          | Spot your next move
+/          | Spot your next move
         p style="color: #939393;"
-          em &copy; 2015 CitySpade
-        p 
-          | Contact Us through WeChat:
-        = image_tag "mail/qrcode_edit.jpg", style: "margin-left: 8px"
+/          em &copy; 2015 CitySpade
+        p
+
+/          | Contact Us through WeChat:
+/        = image_tag "mail/qrcode_edit.jpg", style: "margin-left: 8px"
       #sp-footer-b.footer-center.col-md-4
-        h3.header.footer-ul-title Browse
-        ul.list-unstyled
-          li.footer-ul-list
-            = link_to 'Rental Listings', flag_search_path('rental')
-          li.footer-ul-list
-            = link_to 'Sale Listings', flag_search_path('sale')
-          li.footer-ul-list
-            = link_to 'Neighborhoods', neighborhoods_path
-          li.footer-ul-list
-            = link_to 'List with us', '/list_with_us/new'
-          li.footer-ul-list
-            = link_to 'Blog', blogs_path
+
+/        h3.header.footer-ul-title Browse
+/        ul.list-unstyled
+/          li.footer-ul-list
+/            = link_to 'Rental Listings', flag_search_path('rental')
+/          li.footer-ul-list
+/            = link_to 'Sale Listings', flag_search_path('sale')
+/          li.footer-ul-list
+/            = link_to 'Neighborhoods', neighborhoods_path
+/          li.footer-ul-list
+/            = link_to 'List with us', '/list_with_us/new'
+/          li.footer-ul-list
+/            = link_to 'Blog', blogs_path
       #sp-footer-b.footer-last.col-md-4
-        h3.header.footer-ul-title Company
-        ul.list-unstyled
-          li.footer-ul-list
-            = link_to 'About', static_page_path('about')
-          li.footer-ul-list
-            = link_to 'Support', static_page_path('support')
-          li.footer-ul-list
-            = link_to 'Privacy', static_page_path('privacy')
-          li.footer-ul-list
-            = link_to 'Terms of Use', static_page_path('terms')
-          li.footer-ul-list
-            = link_to 'Contact', contact_us_path
+
+/        h3.header.footer-ul-title Company
+/        ul.list-unstyled
+/          li.footer-ul-list
+/            = link_to 'About', static_page_path('about')
+/          li.footer-ul-list
+/            = link_to 'Support', static_page_path('support')
+/          li.footer-ul-list
+/            = link_to 'Privacy', static_page_path('privacy')
+/          li.footer-ul-list
+/            = link_to 'Terms of Use', static_page_path('terms')
+/          li.footer-ul-list
+/            = link_to 'Contact', contact_us_path
 section#sp-coppyright-wrapper  class="#{(action_name == 'map' && controller_name == 'search') ? 'search-map-footer' : nil}"
   .container
     #coppyright.row
