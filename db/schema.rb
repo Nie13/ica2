@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818212002) do
+ActiveRecord::Schema.define(version: 20170317003059) do
 
   create_table "account_inboxes", force: true do |t|
     t.integer  "account_id"
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 20160818212002) do
   add_index "account_omniauths", ["account_id"], name: "index_account_omniauths_on_account_id", using: :btree
 
   create_table "accounts", force: true do |t|
-    t.string   "email",                             default: "", null: false
-    t.string   "encrypted_password",                default: "", null: false
+    t.string   "email",                             default: "",    null: false
+    t.string   "encrypted_password",                default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                     default: 0,  null: false
+    t.integer  "sign_in_count",                     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20160818212002) do
     t.string   "api_key"
     t.string   "office_token"
     t.string   "company"
+    t.date     "birth_date"
+    t.string   "sickness"
+    t.string   "need_help"
+    t.date     "start_time"
+    t.string   "native_place"
+    t.string   "edu_level"
+    t.string   "home_address"
+    t.boolean  "fastable",                          default: false
+    t.string   "salary_level"
   end
 
   add_index "accounts", ["api_key"], name: "index_accounts_on_api_key", using: :btree
@@ -166,6 +175,15 @@ ActiveRecord::Schema.define(version: 20160818212002) do
 
   add_index "brokers", ["name"], name: "index_brokers_on_name", using: :btree
 
+  create_table "building_images", force: true do |t|
+    t.string   "image"
+    t.integer  "building_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "building_images", ["building_id"], name: "index_building_images_on_building_id", using: :btree
+
   create_table "building_listings", force: true do |t|
     t.integer  "building_id"
     t.integer  "listing_id"
@@ -177,8 +195,8 @@ ActiveRecord::Schema.define(version: 20160818212002) do
   add_index "building_listings", ["listing_id"], name: "index_building_listings_on_listing_id", using: :btree
 
   create_table "buildings", force: true do |t|
-    t.string   "city",         limit: 20
-    t.string   "borough",      limit: 20
+    t.string   "city",          limit: 20
+    t.string   "borough",       limit: 20
     t.integer  "block"
     t.integer  "lot"
     t.integer  "cd"
@@ -186,20 +204,20 @@ ActiveRecord::Schema.define(version: 20160818212002) do
     t.integer  "cb2010"
     t.integer  "school_dist"
     t.integer  "councli"
-    t.string   "zipcode",      limit: 5
-    t.string   "fire_comp",    limit: 20
+    t.string   "zipcode",       limit: 5
+    t.string   "fire_comp",     limit: 20
     t.integer  "police_prct"
     t.string   "address"
-    t.string   "zone_dist1",   limit: 20
-    t.string   "overlay1",     limit: 20
-    t.string   "s_p_dist1",    limit: 20
-    t.string   "all_zoning1",  limit: 20
-    t.string   "allzoning",    limit: 20
-    t.string   "split_zone",   limit: 20
-    t.string   "bldg_class",   limit: 20
+    t.string   "zone_dist1",    limit: 20
+    t.string   "overlay1",      limit: 20
+    t.string   "s_p_dist1",     limit: 20
+    t.string   "all_zoning1",   limit: 20
+    t.string   "allzoning",     limit: 20
+    t.string   "split_zone",    limit: 20
+    t.string   "bldg_class",    limit: 20
     t.integer  "land_use"
     t.integer  "easements"
-    t.string   "owner_type",   limit: 5
+    t.string   "owner_type",    limit: 5
     t.string   "owner_name"
     t.integer  "lot_area"
     t.integer  "bldg_area"
@@ -220,33 +238,36 @@ ActiveRecord::Schema.define(version: 20160818212002) do
     t.integer  "lot_depth"
     t.integer  "bldg_front"
     t.integer  "bldg_depth"
-    t.string   "ext",          limit: 5
+    t.string   "ext",           limit: 5
     t.integer  "prox_code"
-    t.string   "irr_lot_code", limit: 5
-    t.integer  "lot_type",     limit: 2
-    t.integer  "bsmt_code",    limit: 2
+    t.string   "irr_lot_code",  limit: 5
+    t.integer  "lot_type",      limit: 2
+    t.integer  "bsmt_code",     limit: 2
     t.integer  "year_built"
     t.integer  "built_code"
     t.integer  "year_alter1"
     t.integer  "year_alter2"
-    t.string   "hist_dist",    limit: 50
+    t.string   "hist_dist",     limit: 50
     t.string   "land_mark"
-    t.float    "built_far",    limit: 24
-    t.float    "resid_far",    limit: 24
-    t.float    "comm_far",     limit: 24
-    t.float    "facil_far",    limit: 24
-    t.float    "boro_code",    limit: 24
-    t.string   "bbl",          limit: 20
+    t.float    "built_far",     limit: 24
+    t.float    "resid_far",     limit: 24
+    t.float    "comm_far",      limit: 24
+    t.float    "facil_far",     limit: 24
+    t.float    "boro_code",     limit: 24
+    t.string   "bbl",           limit: 20
     t.integer  "tract2010"
     t.integer  "condo_no"
-    t.string   "sanborn",      limit: 20
-    t.string   "version",      limit: 20
+    t.string   "sanborn",       limit: 20
+    t.string   "version",       limit: 20
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "flag",         limit: 1,    default: 0
-    t.string   "name",         limit: 40
+    t.integer  "flag",          limit: 1,    default: 0
+    t.string   "name",          limit: 40
     t.text     "description"
-    t.string   "amenities",    limit: 2000
+    t.string   "amenities",     limit: 2000
+    t.boolean  "bflag",                      default: false, null: false
+    t.text     "apt_amenities"
+    t.text     "neighborhood"
   end
 
   add_index "buildings", ["city", "borough", "address"], name: "index_buildings_on_city_and_borough_and_address", using: :btree
@@ -276,6 +297,43 @@ ActiveRecord::Schema.define(version: 20160818212002) do
   add_index "cities", ["hot"], name: "index_cities_on_hot", using: :btree
   add_index "cities", ["name"], name: "index_cities_on_name", using: :btree
   add_index "cities", ["state"], name: "index_cities_on_state", using: :btree
+
+  create_table "client_applies", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "dob"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "ssn"
+    t.string   "building"
+    t.string   "unit"
+    t.string   "current_addr"
+    t.string   "current_landlord"
+    t.string   "current_landlord_ph"
+    t.integer  "current_rent"
+    t.string   "position"
+    t.string   "company"
+    t.date     "start_date"
+    t.integer  "salary"
+    t.string   "pet"
+    t.string   "breed"
+    t.string   "pet_name"
+    t.integer  "pet_age"
+    t.float    "pet_weight",          limit: 24
+    t.string   "emergency_name"
+    t.string   "emergency_addr"
+    t.string   "emergency_phone"
+    t.string   "emergency_relation"
+    t.string   "referral"
+    t.boolean  "is_employed"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "residency"
+    t.string   "access_token"
+  end
+
+  add_index "client_applies", ["access_token"], name: "index_client_applies_on_access_token", unique: true, using: :btree
 
   create_table "client_checkins", force: true do |t|
     t.string   "first_name",            null: false
@@ -316,6 +374,29 @@ ActiveRecord::Schema.define(version: 20160818212002) do
 
   add_index "disqus", ["disqus_obj_id"], name: "index_disqus_on_disqus_obj_id", using: :btree
   add_index "disqus", ["thread_id"], name: "index_disqus_on_thread_id", using: :btree
+
+  create_table "documents", force: true do |t|
+    t.string   "name"
+    t.string   "doc_type"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "documents", ["client_id"], name: "index_documents_on_client_id", using: :btree
+
+  create_table "floorplans", force: true do |t|
+    t.string   "image"
+    t.integer  "beds"
+    t.float    "baths",       limit: 24
+    t.integer  "price"
+    t.integer  "sqft"
+    t.integer  "building_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "floorplans", ["building_id"], name: "index_floorplans_on_building_id", using: :btree
 
   create_table "fs_categories", force: true do |t|
     t.string   "name"
@@ -791,6 +872,11 @@ ActiveRecord::Schema.define(version: 20160818212002) do
     t.datetime "updated_at"
     t.string   "referral"
     t.string   "wechat"
+    t.string   "gender"
+    t.string   "prefgender"
+    t.integer  "minbudget"
+    t.integer  "maxbudget"
+    t.integer  "priority"
   end
 
   create_table "search_records", force: true do |t|
@@ -866,6 +952,16 @@ ActiveRecord::Schema.define(version: 20160818212002) do
   end
 
   add_index "transport_places", ["political_area_id"], name: "index_transport_places_on_political_area_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "venues", force: true do |t|
     t.integer  "political_area_id"

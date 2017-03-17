@@ -206,13 +206,12 @@ defaults: &defaults
     pinterest: 'https://www.pinterest.com/cityspade'
     linkedin: 'https://www.linkedin.com/company/cityspade-inc-'
   email:
-    noreply: 'CitySpade<noreply@cityspade.com>'
-    contact: 'CitySpade<contact@cityspade.com>'
-    system: 'CitySpade<cityspade@gmail.com>'
-    bcc: 'cityspade@gmail.com'
+    noreply: 'CitySpade<vvlll2flri@outlook.com>'
+    contact: 'CitySpade<vvlll2flri@outlook.com>'
+    system: 'CitySpade<vvlll2flri@outlook.com>'
+    bcc: 'vvlll2flri@outlook.com'
     list_with_us:
-      - 'zijun.wang@cityspade.com'
-      - 'hang.zhang@cityspade.com'
+      - 'vvlll2flri@outlook.com'
   image_sizes:
     Listing:
       - '360X240'
@@ -496,8 +495,24 @@ defaults: &defaults
     expired:
       "expired"
 
-
-
+#for user sickness and need
+  account_details:
+    sicknesses:
+      - "糖尿病"
+      - "心脏病"
+      - "高血压"
+      - "中风史"
+      - "阿尔兹海默"
+      - "癫痫"
+      - "肺部疾病"
+    need_helps:
+      - "做饭/营养"
+      - "喂食"
+      - "出行照顾/有驾照"
+      - "照料行动不便"
+      - "照料卧床老人"
+      - "用药提醒"
+      - "洗澡"
 
 development:
   <<: *defaults

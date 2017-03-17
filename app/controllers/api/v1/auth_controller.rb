@@ -1,4 +1,4 @@
-class Api::V1::AuthController < Api::V1::BaseController 
+class Api::V1::AuthController < Api::V1::BaseController
   before_action :require_token_key!, :only => :logout
   before_action :verify_devise_access!, :only => :login
   def login
@@ -20,7 +20,8 @@ class Api::V1::AuthController < Api::V1::BaseController
       email: params[:email] || params[:username],
       password: params[:password],
       first_name: params[:first_name],
-      last_name: params[:last_name]
+      last_name: params[:last_name],
+      birth_date: params[:birth_date]
     }
     @account = Account.new attrs
     @account.password_confirmation ||= @account.password

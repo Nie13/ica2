@@ -9,15 +9,15 @@ class RoomsController < ApplicationController
                         .page(params[:page]).per(24)
 
     link_hash = {
-      "All Posts" => roomsearch_path,
-      "Roommates" => roommates_path
+      "提供服务MAYBE" => roomsearch_path,
+      "找到需求MAYBE" => roommates_path
     }
 
     render "room_search/_index_layout",
       locals: {
         total_post_count: sorted_rooms.count,
         posts: rooms,
-        heading: "ROOM OFFERS",
+        heading: "获取所有的服务列表",
         new_path: new_room_path,
         link_hash: link_hash
       }
@@ -25,9 +25,9 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @subway_marker = @room.closest_listing
+    #@subway_marker = @room.closest_listing
     if @room.expired?
-      flash[:notice] = "This room offer may have expired"
+      flash[:notice] = "服务过期"
     end
   end
 
@@ -36,6 +36,7 @@ class RoomsController < ApplicationController
 
     @room = Room.new
     @room_detail = RoomDetail.new
+
   end
 
   def edit
@@ -67,7 +68,7 @@ class RoomsController < ApplicationController
       end
     end
 
-    if current_account.logined_facebook?
+    if !current_account.logined_facebook?
       if @room.save
         flash[:notice] = "New room offer posted"
         redirect_to @room

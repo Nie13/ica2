@@ -17,41 +17,109 @@
             .col-md-8.form.normal
               h3.title Profile Information
               .form-field
-                = f.label :first_name
-                = f.text_field :first_name, class: 'textfield'
-              .form-field
-                = f.label :last_name
+                = f.label :last_name, '姓'
                 = f.text_field :last_name, class: 'textfield'
               .form-field
-                = f.label :phone
-                = f.text_field :first_phone, class: 'textfield first-phone'
-                span -
-                = f.text_field :last_phone, class: 'textfield last-phone'
+                = f.label :first_name, '名'
+                = f.text_field :first_name, class: 'textfield'
+              .form-field
+                = f.label :birth_date, '出生日期'
+                = f.text_field :birth_date, :placeholder => "yyyy-mm-dd", class: 'textfield',
+                  id: "birthDate"
+              .form-field
+                = f.label :native_place, '籍贯'
+                = f.text_field :native_place, class: 'textfield'
+              .form-field
+                = f.label :home_address, '家庭住址'
+                = f.text_field :home_address, class: 'textfield'
+
+              - if current_account.role == 'worker'
+                .form-field
+                  = f.label :start_time, '开始从业时间'
+                  = f.text_field :start_time, :placeholder => "yyyy-mm-dd", class: 'textfield'
+                .form-field
+                  = f.label :edu_level, '教育水平'
+                  = f.text_field :edu_level, class: 'textfield'
+                .form-field
+                  = f.label :salary_level, '薪资要求'
+                  = f.text_field :salary_level, class: 'textfield'
+                .form-field
+                  label 是否提供一键到家服务
+                  .col-sm-6
+                    = f.radio_button :fastable, 'true', id: "fast_true"
+                    label for="fast_true" 是
+                    = f.radio_button :fastable, 'false', id: "fast_false"
+                    label for="fast_false" 否
+
+
               - if devise_mapping.confirmable? && resource.pending_reconfirmation?
                 div
                   | Currently waiting confirmation for:
                   = resource.unconfirmed_email
 
+              = f.fields_for :account, current_account do |ca|
+                .form-group
+                  - if current_account.role == 'worker'
+                    label 我会照顾的常见疾病
+                  - else
+                    label 常见疾病
+                  br
+
+                  - sicknesses = Settings.account_details["sicknesses"]
+                  .row
+                    - for suckness in sicknesses
+                      .col-sm-12
+                        div.aligned-checklist
+                          label
+                            - is_checked = current_account.sickness.empty? ? false : current_account.sickness.include?(suckness)
+                            = check_box_tag "account[sickness][]", suckness, is_checked
+                            span.styled-checkbox
+                            = suckness
+
+                .form-group
+                  - if current_account.role == 'worker'
+                    label 我可以提供的帮助类型
+                  - else
+                    label 需要帮助类型
+                  br
+
+                  - need_helps = Settings.account_details["need_helps"]
+                  .row
+                    - for need_holp in need_helps
+                      .col-sm-12
+                        div.aligned-checklist
+                          label
+                            - is_checkeed = current_account.need_help.empty? ? false : current_account.need_help.include?(need_holp)
+                            = check_box_tag 'account[need_help][]', need_holp, is_checkeed
+                            span
+                            = need_holp
+
+
 
               br
               br
-              h3.title Email
+              h3.title 联系方式
               .form-field
-                = f.label :email
+                = f.label :phone, '电话'
+                = f.text_field :first_phone, class: 'textfield first-phone'
+                span -
+                = f.text_field :last_phone, class: 'textfield last-phone'
+              .form-field
+                = f.label :email, '邮箱'
                 = f.text_field :email, class: 'textfield'
 
-              .form.field
-                .row
-                  = f.fields_for :mail_notify do |mail_settings|
-                    .col-md-6.col-xs-9.recommend-emails
-                      = mail_settings.label :is_recommended,
-                        "Recieve listing recommendation emails?"
-                    .col-md-6.col-xs-3
-                      = mail_settings.check_box :is_recommended, as: :boolean
+              /.form.field
+                /.row
+                  /= f.fields_for :mail_notify do |mail_settings|
+                    /.col-md-6.col-xs-9.recommend-emails
+                      /= mail_settings.label :is_recommended,
+                        /"Recieve listing recommendation emails?"
+                    /.col-md-6.col-xs-3
+                      /= mail_settings.check_box :is_recommended, as: :boolean
               br
               br
 
               = render '/accounts/password', f: f
 
               .submit
-                = f.submit "Save Changes", class: 'btn-custom profile-edit'
+                = f.submit "保存修改", class: 'btn-custom profile-edit'

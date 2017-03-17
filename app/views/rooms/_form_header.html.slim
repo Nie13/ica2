@@ -4,7 +4,7 @@
       .col-xs-6.center.room-column
         .table-wrapper
           - if request.path == new_room_path
-            h2.current_section ROOM OFFER
+            h2.current_section 发布服务
             .triangle
 
           - else
@@ -19,4 +19,4 @@
 
           - else
             h2
-              = link_to "NEED A ROOMMATE?", new_roommate_path
+              = link_to "发布需求", new_roommate_path

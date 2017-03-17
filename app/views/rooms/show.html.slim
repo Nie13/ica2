@@ -24,13 +24,13 @@
     .row
       = render partial_path % "main_info"
 
-  .container.room-detail
-    = render partial_path % "room_details"
+  /.container.room-detail
+    /= render partial_path % "room_details"
 
   .container-fluid.full-width-container
     = render partial_path % 'google_maps'
 
-  = render "room_search/create_post_tiles"
+  /= render "room_search/create_post_tiles"
 
 // Modals
 = render partial_path % "contact_modal"

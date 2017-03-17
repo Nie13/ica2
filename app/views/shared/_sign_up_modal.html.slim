@@ -30,6 +30,13 @@
             = f.text_field :last_name, :autofocus => true, :placeholder => "姓", class: 'textfield'
             = f.text_field :first_name, :placeholder => "名", class: 'textfield'
             = f.email_field :email, :autofocus => true, :placeholder => " 邮箱", class: 'textfield'
+            = f.text_field :birth_date, :placeholder => "出生日期（yyyy-mm-dd)", class: 'textfield'
             = f.password_field :password, :placeholder => "密码", class: 'textfield'
             = f.password_field :password_confirmation, :placeholder => "重复密码", class: 'textfield'
+            p
+              |
+            = f.radio_button :role, "user", id: "user", required: true
+            label for="user" 注册为用户
+            = f.radio_button :role, "worker", id: "worker", required: true
+            label for="worker" 注册为护工
             = f.submit "注册", class: 'btn-custom'

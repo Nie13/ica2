@@ -26,12 +26,15 @@ class Account < ActiveRecord::Base
   has_many :rooms
   has_many :roommates
 
-  accepts_nested_attributes_for :mail_notify
+  #accepts_nested_attributes_for :mail_notify
 
-  after_create :build_default_mail_notify, :send_welcome_mail
+  #after_create :build_default_mail_notify, :send_welcome_mail
   after_save :set_cache_id
 
-  Roles = ["user", "editor", "admin", "office"]
+  serialize :sickness, Array
+  serialize :need_help, Array
+
+  Roles = ["user", "editor", "admin", "office", "worker"]
 
   validates_presence_of :role
   validates_inclusion_of :role, in: Roles

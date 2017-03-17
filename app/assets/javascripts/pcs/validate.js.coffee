@@ -11,6 +11,8 @@ App.Validate =
           required: true
         "account[last_name]":
           required: true
+        "account[birth_date]":
+          required: true
         "account[email]":
           required: true,
           email: true

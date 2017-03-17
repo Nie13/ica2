@@ -24,9 +24,9 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
               span
                 span 登录
         - else
+          li
+            | 您好
           li.dropdown.auto-drop.hidden-xs
-            span
-              span 您好
             a.dropdown-toggle href='#' data-toggle="dropdown"
               = image_tag current_account.small_image_url,
                   class: 'circle avatar-40',
@@ -35,13 +35,13 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
             ul.dropdown-menu
               li
                 a href=account_saved_wishlist_path(flag: Settings.listing_flags.rental)
-                  | Wishlist
+                  | 心愿单
               li
                 a href=edit_account_path
-                  | Account Settings
+                  | 设置
               li
                 a href=destroy_account_session_path  data-method='delete'
-                  | Logout
+                  | 登出
           li.visible-xs
             a href=edit_account_path
               | Account
