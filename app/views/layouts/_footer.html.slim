@@ -5,9 +5,9 @@ footer#sp-footer-wrapper class="#{(action_name == 'map' && controller_name == 's
         = link_to root_path do
           = image_tag "logo/B-City-logo2.png"
         p
-/          | Spot your next move
+          /| Spot your next move
         p style="color: #939393;"
-/          em &copy; 2015 CitySpade
+          /em &copy; 2015 CitySpade
         p
 
 /          | Contact Us through WeChat:
@@ -46,10 +46,10 @@ section#sp-coppyright-wrapper  class="#{(action_name == 'map' && controller_name
       #sp-footer.col-md-12
         #jmsocials_wrap184.default.jmsocials_wrap
           ul.jmsocials_items
-            - Settings.external_links.each do |key,value|
-              li.jmsocials_item
-                = link_to value, class: 'jmsocials_link asTip', target: '_blank', rel: 'publisher'
-                  i.fa class="fa-#{key.split('_').first}"
+            /- Settings.external_links.each do |key,value|
+              /li.jmsocials_item
+                /= link_to value, class: 'jmsocials_link asTip', target: '_blank', rel: 'publisher'
+                  /i.fa class="fa-#{key.split('_').first}"
 
 - if content_for?(:footer_script)
   = yield :footer_script

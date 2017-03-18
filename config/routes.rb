@@ -38,7 +38,15 @@ CitySpade::Application.routes.draw do
 
   get 'mail_notifies/unsubscribe', as: :unsubscribe_mail_notify
 
-  get '/roomsearch', to: 'room_search#index'
+  #get '/roomsearch', to: 'room_search#index'
+  get '/alllists', to: 'room_search#index'
+
+  #resources :room_search, path: "alllists" do
+  #end
+
+  #namespace :room_search, path: "alllists" do
+    #root :to => 'room_search#index'
+  #end
 
   get '/apply' => 'client_apply#new'
   match '/apply/create' => 'client_apply#create', via: [:get, :post]
@@ -177,7 +185,7 @@ CitySpade::Application.routes.draw do
   get 'download' => "home#download"
 
   get "sitemap.xml" => "home#sitemap", format: :xml, as: :sitemap
-  get "robots.txt" => "home#robots", format: :text, as: :robots
+  #get "robots.txt" => "home#robots", format: :text, as: :robots
 
   namespace :admin do
     root :to => 'welcome#index'

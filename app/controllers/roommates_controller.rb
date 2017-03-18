@@ -7,7 +7,7 @@ class RoommatesController < ApplicationController
       .page(params[:page]).per(24)
 
     link_hash = {
-      "所有服务列表" => roomsearch_path,
+      "所有服务列表" => alllists_path,
       "LT服务列表" => rooms_path
     }
 
