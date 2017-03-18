@@ -360,19 +360,21 @@ class ApplicationController < ActionController::Base
       @page_keyboards = 'CitySpade, no fee, apartment, rent, bonus, dailydeals, New York, NYC, studio, bed, bath, studio'
     when 'room_search', 'roommates','rooms'
       if action_name == 'index'
-        @page_description = 'CitySpade provides a platform to find suitable roommates and rooms for sublet in New York City.'
+        @page_description = '优家陪护为您提供护工服务'
+      else
+        @page_title = "优家陪护"
       end
-      @page_keywords = 'CitySpade, New York City, NYC, rooms, sublet, roommates, rent, room offer, apartment'
+      @page_keywords = '护工, 服务, 优家陪护'
     else
-      @page_title ||= 'CitySpade: Apartments for Rent, Building and Neighborhood Reviews, Sublets and Roommates'
-      @page_description ||= 'Make smarter rental decisions through our building and neighborhood reviews. CitySpade is here to help you with your apartment search in New York City.'
-      @page_keywords ||= 'CitySpade, apartments, buildings, neighborhoods, reviews, NO FEE apartments, apartments for rent, NYC apartments'
+      @page_title ||= '优家陪护为您提供护工服务'
+      @page_description ||= '优家陪护为您提供护工'
+      @page_keywords ||= '护工, 服务, 优家陪护'
     end
     if @page_title
       if params[:page]
         @page_title << ", Page #{params[:page]}"
       end
-      @page_title << " | CitySpade"
+      @page_title << " | 优家陪护"
     end
   end
 

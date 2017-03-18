@@ -9,15 +9,15 @@ class RoomsController < ApplicationController
                         .page(params[:page]).per(24)
 
     link_hash = {
-      "提供服务MAYBE" => roomsearch_path,
-      "找到需求MAYBE" => roommates_path
+      "所有服务列表" => roomsearch_path,
+      "QH服务列表" => roommates_path
     }
 
     render "room_search/_index_layout",
       locals: {
         total_post_count: sorted_rooms.count,
         posts: rooms,
-        heading: "获取所有的服务列表",
+        heading: "获取所有的LT服务列表",
         new_path: new_room_path,
         link_hash: link_hash
       }
@@ -70,7 +70,7 @@ class RoomsController < ApplicationController
 
     if !current_account.logined_facebook?
       if @room.save
-        flash[:notice] = "New room offer posted"
+        flash[:notice] = "已发布新LT服务"
         redirect_to @room
       else
         flash[:alert] = @room.errors.full_messages.join(", ")
@@ -86,7 +86,7 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
     if @room.update(room_params)
-      flash[:notice] = "Room offer updated"
+      flash[:notice] = "LT服务已更新"
       redirect_to @room
     else
       flash[:alert] = @room.errors.full_messages.join(", ")
@@ -97,14 +97,14 @@ class RoomsController < ApplicationController
   def expire
     @room = Room.find(params[:room_id])
     @room.expired!
-    redirect_to rooms_path, notice: "Successfully expired Room Offer"
+    redirect_to rooms_path, notice: "服务已过期"
   end
 
   def destroy
     @room = Room.find(params[:id])
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to rooms_url, notice: 'Room offer was successfully removed.' }
+      format.html { redirect_to rooms_url, notice: 'LT服务已删除' }
       format.json { head :no_content }
     end
   end
@@ -134,12 +134,12 @@ class RoomsController < ApplicationController
       reputation = current_account.get_room_saved(@room)
       reputation.destroy
       respond_to do |format|
-        format.html { redirect_to @room, flash: {notice:"Removed from your account"}}
+        format.html { redirect_to @room, flash: {notice:"已从愿望单移除"}}
       end
     elsif
       Reputation.create({reputable: @room, category: 'room', account_id: current_account.id})
       respond_to do |format|
-        format.html { redirect_to @room, flash: {notice: "Saved to your account"}}
+        format.html { redirect_to @room, flash: {notice: "已存至愿望单"}}
       end
     end
   end

@@ -7,5 +7,5 @@
 
     = render 'form', f: f
 
-- if current_account.nil? || !current_account.logined_facebook?
+- if current_account.nil? || current_account.logined_facebook?
   = render 'shared/facebook_modal'

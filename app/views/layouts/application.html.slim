@@ -16,10 +16,10 @@ html.no-js lang='en' prefix="og: http://ogp.me/ns#"
     meta property='og:site_name' content='CitySpade'
     meta content=Settings.omniauth.facebook_id property='fb:app_id'
     meta name="keywords" content=seo_keywords
-    meta name='application-name' content='CitySpade'
+    meta name='application-name' content='优家陪护'
     meta [
       name='description'
-      content="#{seo_description}" 
+      content="#{seo_description}"
     ]
 
     = yield :seo
@@ -28,7 +28,7 @@ html.no-js lang='en' prefix="og: http://ogp.me/ns#"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = render_link_canonical
-    link href=asset_path("city-fav.png") rel="shortcut icon"
+    link href=asset_path("favicon.png") rel="shortcut icon"
 
   body [
     class="featured ltr preset1 menu-home responsive bg hfeed clearfix \

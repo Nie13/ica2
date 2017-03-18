@@ -35,8 +35,9 @@
             = f.password_field :password_confirmation, :placeholder => "重复密码", class: 'textfield'
             p
               |
-            = f.radio_button :role, "user", id: "user", required: true
-            label for="user" 注册为用户
-            = f.radio_button :role, "worker", id: "worker", required: true
-            label for="worker" 注册为护工
+            .row
+              = f.radio_button :role, "user", id: "user", required: true
+              label for="user" 注册为用户
+              = f.radio_button :role, "worker", id: "worker", required: true
+              label for="worker" 注册为护工
             = f.submit "注册", class: 'btn-custom'

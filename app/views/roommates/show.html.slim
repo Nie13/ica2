@@ -1,4 +1,4 @@
-- content_for :custom_title, "#{@roommate.title} | CitySpade"
+- content_for :custom_title, "#{@roommate.title} | 优家陪护"
 
 #upperImageSection.container
   .row
@@ -11,15 +11,15 @@
       h2
         = @roommate.account.first_name
       h3#budgetpriceRM
-        |  Budget: #{number_to_currency(@roommate.budget, precision: 0)}
-        |  / Month
+        |  薪酬: #{@roommate.budget}
+        |  元/ 每月
 
     .center
       - if @roommate.account == current_account
-        = link_to "Edit post", edit_roommate_path(@roommate), :method => :get
+        = link_to "修改", edit_roommate_path(@roommate), :method => :get
         span
           |  /
-        = link_to "Remove post", expire_roommates_path(roommate_id: @roommate), :method => :post
+        = link_to "删除", expire_roommates_path(roommate_id: @roommate), :method => :post
 
 
 .container#roommateSpecificRM
@@ -30,77 +30,78 @@
   - if current_account.nil?
     .row.center#roommateContactButtonRow
       a.btn.sublet-btn.letter-spaced data-toggle="modal" data-target="#fbModal"
-        | I AM INTERESTED!
-      .modal#fbModal
-        = render "shared/facebook_modal"
+        | 不感兴趣
+      /.modal#fbModal
+        /= render "shared/facebook_modal"
   - else
     .row.center#roommateContactButtonRow
       a.btn.sublet-btn.letter-spaced data-toggle="modal" data-target="#contactModal"
-        | I AM INTERESTED!
+        | 不感兴趣
     .modal.fade#contactModal tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       .modal-dialog
         .modal-content
           .modal-header
             button.close type="button" data-dismiss="modal" &times;
-            h4.modal-title.center Send message to #{@roommate.account.first_name} #{@roommate.account.last_name}
+            h4.modal-title.center 为毛对 #{@roommate.account.last_name} #{@roommate.account.first_name} 的服务不感兴趣?
+            /h4.modal-title.center Send message to #{@roommate.account.first_name} #{@roommate.account.last_name}
           .modal-body
             = render "form_contact_roommate"
 
   .row#aboutmeSectionRM style="margin-top:-2.5%;margin-bottom:0.5%"
     .col-sm-8.col-sm-offset-2
       h3
-        | About Me:
+        | 描述:
       p =@roommate.about_me
-  .row#numberRoommateRow
-    .col-sm-3.col-sm-offset-2.col-xs-5#numberRoommate
-      | I Am Looking For:
-    .col-sm-5.text-right.col-xs-7#numberRoommate2
-      = @roommate.num_roommates unless nil
-      |  roomate(s)
-  .row#genderRMRow
-    .col-sm-3.col-sm-offset-2.col-xs-4#genderRM
-      | My Gender:
-    .col-sm-5.text-right.col-xs-8#genderRM2
-      - if @roommate.gender.empty?
-        | n/a
-      - else
-        = @roommate.gender
-  .row#ageRMRow
-    .col-sm-3.col-sm-offset-2.col-xs-4#ageRM
-      | I Prefer Students:
-    .col-sm-5.text-right.col-xs-8#ageRM2
-      - if @roommate.students_only
-        | Yes
-      - else
-        | no
+  /.row#numberRoommateRow
+    /.col-sm-3.col-sm-offset-2.col-xs-5#numberRoommate
+      /| I Am Looking For:
+    /.col-sm-5.text-right.col-xs-7#numberRoommate2
+      /= @roommate.num_roommates unless nil
+      /|  roomate(s)
+  /.row#genderRMRow
+    /.col-sm-3.col-sm-offset-2.col-xs-4#genderRM
+      /| My Gender:
+    /.col-sm-5.text-right.col-xs-8#genderRM2
+      /- if @roommate.gender.empty?
+        /| n/a
+      /- else
+        /= @roommate.gender
+  /.row#ageRMRow
+    /.col-sm-3.col-sm-offset-2.col-xs-4#ageRM
+      /| I Prefer Students:
+    /.col-sm-5.text-right.col-xs-8#ageRM2
+      /- if @roommate.students_only
+        /| Yes
+      /- else
+        /| no
   .row#moveinDateRMRow
     .col-sm-3.col-sm-offset-2.col-xs-4#moveinDateRM
-      | Move-In Date:
+      | 开始时间:
     .col-sm-5.text-right.col-xs-8#moveinDateRM2
       = @roommate.move_in_date.strftime("%B %d, %Y")
   .row#roommatedurationRow
     .col-sm-3.col-sm-offset-2.col-xs-5#roommatedurationleftRM
-      | Duration:
+      | 时长:
     .col-sm-5.text-right.col-xs-7#roommatedurationrightRM
       = @roommate.duration unless nil
-      |  month(s)
-  .row#preferredNeighborhoodRMRow
-    .col-sm-3.col-sm-offset-2.col-xs-4#preferredNeighborhoodRM
-      | Preferred Boroughs:
-    .col-sm-5.text-right.col-xs-8#preferredNeighborhoodRM2
-      = Array(@roommate.borough).join(", ")
-  .row#preferredNeighborhoodRMRow
-    .col-sm-3.col-sm-offset-2.col-xs-4#preferredNeighborhoodRM
-      | Preferred Neighborhoods:
-    .col-sm-5.text-right.col-xs-8#preferredNeighborhoodRM2
-      = @roommate.location
-  .row#petsRMRow style="margin-bottom:10%"
-    .col-sm-3.col-sm-offset-2.col-xs-4#petsRM
-      | Pets (I am okay with):
-    .col-sm-5.text-right.col-xs-8#petsRM2
-      - if @roommate.pets_allowed.empty?
-        | n/a
-      - else
-        = @roommate.pets_allowed.join(", ")
+      |  个月
+  /.row#preferredNeighborhoodRMRow
+    /.col-sm-3.col-sm-offset-2.col-xs-4#preferredNeighborhoodRM
+      /| Preferred Boroughs:
+    /.col-sm-5.text-right.col-xs-8#preferredNeighborhoodRM2
+      /= Array(@roommate.borough).join(", ")
+  /.row#preferredNeighborhoodRMRow
+    /.col-sm-3.col-sm-offset-2.col-xs-4#preferredNeighborhoodRM
+      /| Preferred Neighborhoods:
+    /.col-sm-5.text-right.col-xs-8#preferredNeighborhoodRM2
+      /= @roommate.location
+  /.row#petsRMRow style="margin-bottom:10%"
+    /.col-sm-3.col-sm-offset-2.col-xs-4#petsRM
+      /| Pets (I am okay with):
+    /.col-sm-5.text-right.col-xs-8#petsRM2
+      /- if @roommate.pets_allowed.empty?
+        /| n/a
+      /- else
+        /= @roommate.pets_allowed.join(", ")
 
-= render "room_search/create_post_tiles"
+/= render "room_search/create_post_tiles"

@@ -14,10 +14,11 @@
       = f.input :last_phone
       = f.input :password
       = f.input :password_confirmation
-      = f.input :company
-      = f.input :role, as: :select, collection: ['user', 'office', 'worker']
-      h4 Mail Notify
-      = f.fields_for :mail_notify do |nt|
-        = nt.input :is_recommended, as: :boolean, label: 'Newsletter'
+
+      /= f.input :company
+      = f.input :role, as: :select, collection: ['user', 'admin', 'worker']
+      /h4 Mail Notify
+      /= f.fields_for :mail_notify do |nt|
+        /= nt.input :is_recommended, as: :boolean, label: 'Newsletter'
       .form-actions
         = f.submit 'Update', class: 'btn btn-primary'

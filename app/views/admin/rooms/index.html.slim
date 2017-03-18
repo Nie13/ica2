@@ -4,7 +4,7 @@
       = form_tag admin_rooms_path, method: :get do
         .field.fieldset.center
           legend
-            | Rooms
+            | LTs
           .input-text.triple-input
             = number_field_tag :id, params[:id], min: 1, placeholder: "ID", class: "col-md-5"
             = text_field_tag :begin_created_at, params[:begin_created_at], placeholder: 'Begin Created At', class: 'datetimepicker col-md-5'
@@ -16,7 +16,7 @@
 .row
   .box.col-md-12
     .cell
-      Strong Rooms
+      Strong LTs
       .clear
     .cell
       table.table.table-striped
@@ -24,8 +24,9 @@
           tr
             th
               = sortable "id", "ID"
-            th
-              = sortable "street_address", "Address"
+
+            /th
+              /= sortable "street_address", "Address"
             th Account
             th Contacted
             th
@@ -34,8 +35,9 @@
               = sortable "title", "Title"
             th
               = sortable "city", "City"
-            th
-              = sortable "state", "State"
+
+            /th
+              /= sortable "state", "State"
             th
               = sortable "created_at", "Created"
         tbody
@@ -43,21 +45,22 @@
             tr
               td
                 = room.id
-              td = room.street_address
+              /td = room.street_address
               th = room.account.try :name
               td = room.contacted
               td = room.expired?
               td = room.title
-              td = room.city.long_name unless room.city.nil?
-              th = room.state.long_name unless room.state.nil?
+              td = room.city
+                /.long_name unless room.city.nil?
+              /th = room.state.long_name unless room.state.nil?
               th = room.created_at.strftime("%A, %B %d, %Y at %l%p")
               td = link_to "Edit", edit_admin_room_path(room),class: 'btn btn-info'
               td = link_to "Expire", expire_admin_room_path(room),
                   method: :post,
-                  data:{confirm: 'Do you want to expire the room ?'},
+                  data:{confirm: 'Do you want to expire this LT ?'},
                   class: 'btn btn-info'
               td = link_to "Delete", admin_room_path(room),
                   method: :delete,
-                  data:{confirm: 'Do you want to delete the room ?'},
+                  data:{confirm: 'Do you want to delete this LT ?'},
                   class: 'btn btn-danger'
     = paginate @rooms

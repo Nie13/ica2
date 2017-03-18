@@ -1,6 +1,6 @@
 #profile.global-container.row
   .container
-    h1.title Edit Account
+    h1.title 帐户设置
     .row
       = render '/accounts/sidebar'
       .setting-box.col-md-9.row
@@ -15,7 +15,7 @@
               .form-field.avatar-upload
                 = f.file_field :image
             .col-md-8.form.normal
-              h3.title Profile Information
+              h3.title 我的优家信息
               .form-field
                 = f.label :last_name, '姓'
                 = f.text_field :last_name, class: 'textfield'

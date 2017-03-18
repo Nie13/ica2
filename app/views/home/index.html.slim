@@ -2,12 +2,11 @@
   .heading ICARE, 一切皆为您
   .row#banner-container
     .col-xs-12.col-sm-6
-      = link_to "寻找陪护",
-        class: "title room-tile"
+      = link_to "寻找陪护"
+
 
     .col-xs-12.col-sm-6
-      = link_to "成为陪护",
-        class: "title roommate-tile"
+      = link_to "成为陪护"
 
 /  #sp-banner-wrapper
 /    .row#banner
@@ -20,10 +19,10 @@
 
 /.home-flashsales.container
   /h2.center Daily Deals
-  .flash-heading.center
-    = link_to "Daily Deals", flashsales_path
-    p.center No-fee listings with special promotions through CitySpade!
-  = render "home_flashsales"
+  /.flash-heading.center
+    /= link_to "Daily Deals", flashsales_path
+    /p.center No-fee listings with special promotions through CitySpade!
+  /= render "home_flashsales"
 
 /.newhome-flashsales.container
 /  .flash-heading.center
@@ -34,7 +33,7 @@
 
 .home-searchforme.container-fluid
   h1 I-CARE的“一键到家”功能提供短期定制化专业陪护服务，成为I-CARE会员，即可免匹配费不限次数使用“一键到家”服务。
-  = link_to "查看详情", new_search_for_me_path
+  = link_to "查看详情", roomsearch_path
 
 /.home-contact.container-fluid
 /  = render "home_contact"

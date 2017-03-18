@@ -1,18 +1,18 @@
 .global-container#password-reset
   .container
-    h2 Forgot your password?
+    h2 忘记密码?
     hr
-    p Please enter the email address for your account. A verification code will be sent to you. Once you have received the verification code, you will be able to choose a new password for your account.
+    p 输入您的注册邮箱，我们将会发送修改密码指示
 
     = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
       = devise_error_messages!
 
       div
-        = f.label :email
+        = f.label :email, '邮箱'
         = f.email_field :email, :autofocus => true
 
       hr
       div
-        = f.submit "Send me reset password instructions", class: 'btn-custom'
+        = f.submit "发送密码修改指示", class: 'btn-custom'
       br
       = render "devise/shared/links"

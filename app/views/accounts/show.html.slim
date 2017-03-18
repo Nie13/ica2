@@ -1,6 +1,7 @@
 - content_for :banner_wrapper do
   .hidden-sm.fullwidthbanner-container
-    .search-banner-bg style="background-image: url(#{asset_path('search_banner.jpg')})"
+    .search-banner-bg style="background-color: #43a102"
+    /.search-banner-bg style="background-image: url(#{asset_path('search_banner.jpg')})"
   .row-fluid#banner-container
     .container
       #banner-search
@@ -20,4 +21,3 @@
     = paginate @listings
 = content_for :footer_script
   = google_maps_script('maps.listings')
-

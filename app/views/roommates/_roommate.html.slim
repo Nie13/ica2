@@ -21,29 +21,29 @@ ruby:
           h4.sublet-user-name = post.account.name
 
           p.sublet-type
-            | (Roommate)
+            | QH
 
-          h5 Posted on #{post.created_at.strftime("%B %d, %Y")}
+          h5 发布于 #{post.created_at.strftime("%B %d, %Y")}
 
-          - Array(post.borough).each do |borough|
-            - if borough_abbrev[borough]
+          /- Array(post.borough).each do |borough|
+            /- if borough_abbrev[borough]
 
-              .borough-abbrev [
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="#{borough}"
-              ]
-                = borough_abbrev[borough]
+              /.borough-abbrev [
+                /data-toggle="tooltip"
+                /data-placement="bottom"
+                /title="#{borough}"
+              /]
+                /= borough_abbrev[borough]
 
       .container.budget-and-date
         .row
           .sublet-budget.col-xs-6.center
             .all-caps-heading
-              | Budget / Month
+              | 薪资
             h3
               | $#{post.budget}
           .sublet-date.col-xs-6
             .all-caps-heading
-              | Move-in date
+              | 开始时间
             h3
               = post.move_in_date.strftime("%b %d")
