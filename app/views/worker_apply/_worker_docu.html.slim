@@ -1,0 +1,79 @@
+= f.fields_for :worker_files, WorkerFiles.new do |doc_f|
+  .form-group
+    = doc_f.label :nurse, "Nurse"
+    .button.file-upload
+      = doc_f.file_field :nurse, multiple: true, name: "worker_apply[documents_attributes][nurse][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "nurse").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+  .form-group
+    = doc_f.label :primary_caregiver, "primary_caregiver"
+    .button.file-upload
+      = doc_f.file_field :primary_caregiver, multiple: true, name: "worker_apply[documents_attributes][primary_caregiver][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "primary_caregiver").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+  .form-group
+    = doc_f.label :middle_caregiver, "middle_caregiver"
+    .button.file-upload
+      = doc_f.file_field :middle_caregiver, multiple: true, name: "worker_apply[documents_attributes][middle_caregiver][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "middle_caregiver").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+  .form-group
+    = doc_f.label :high_caregiver, "high_caregiver"
+    .button.file-upload
+      = doc_f.file_field :high_caregiver, multiple: true, name: "worker_apply[documents_attributes][high_caregiver][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "high_caregiver").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+  .form-group
+    = doc_f.label :standard_caregiver, "standard_caregiver"
+    .button.file-upload
+      = doc_f.file_field :standard_caregiver, multiple: true, name: "worker_apply[documents_attributes][standard_caregiver][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "standard_caregiver").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+  .form-group
+    = doc_f.label :first_add_certificate, "first_add_certificate"
+    .button.file-upload
+      = doc_f.file_field :first_add_certificate, multiple: true, name: "worker_apply[documents_attributes][first_add_certificate][]", accept: 'image/png, image/jpg, application/pdf'
+      i.fa.fa-upload
+      span Upload FIles
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "first_add_certificate").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"

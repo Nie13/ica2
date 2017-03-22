@@ -52,6 +52,10 @@ CitySpade::Application.routes.draw do
   match '/apply/create' => 'client_apply#create', via: [:get, :post]
   get '/apply/confirm' => 'client_apply#confirmation'
 
+  get '/workerapply' => 'worker_apply#new'
+  match '/workerapply/create' => 'worker_apply#create', via: [:get, :post]
+  get '/workerapply/confirm' => 'worker_apply#confirmation'
+  
   resources :roommates, path: 'qhlists' do
    collection do
      match :send_message, via: [:post, :get]
@@ -219,6 +223,7 @@ CitySpade::Application.routes.draw do
     resources :search_for_mes, path: "searchforme", only: [:index]
     resources :client_checkins, path: "checkin", only: [:index]
     get '/bookings' => 'client_checkins#book_showing', as: 'bookings'
+    resources :worker_apply, path: "workerapply", only: [:index]
     resources :rooms, path: 'LTlist' do
       member do
         post 'expire'

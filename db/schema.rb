@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317003059) do
+ActiveRecord::Schema.define(version: 20170321081556) do
 
   create_table "account_inboxes", force: true do |t|
     t.integer  "account_id"
@@ -987,6 +987,44 @@ ActiveRecord::Schema.define(version: 20170317003059) do
   end
 
   add_index "venues", ["political_area_id"], name: "index_venues_on_political_area_id", using: :btree
+
+  create_table "worker_applies", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "dob"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "edu_level"
+    t.string   "nav_place"
+    t.string   "home_address"
+    t.date     "start_date"
+    t.integer  "salary_quest"
+    t.string   "sicknesses"
+    t.string   "helps"
+    t.boolean  "activate"
+    t.boolean  "ltservice"
+    t.boolean  "qhservice"
+    t.date     "available_from"
+    t.date     "available_to"
+    t.time     "begin_time"
+    t.time     "end_time"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "access_token"
+  end
+
+  add_index "worker_applies", ["access_token"], name: "index_worker_applies_on_access_token", unique: true, using: :btree
+
+  create_table "worker_files", force: true do |t|
+    t.string   "name"
+    t.string   "doc_type"
+    t.integer  "worker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "worker_files", ["worker_id"], name: "index_worker_files_on_worker_id", using: :btree
 
   create_table "zipcode_areas", force: true do |t|
     t.string   "zipcode"
