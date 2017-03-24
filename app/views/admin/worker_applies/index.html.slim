@@ -1,0 +1,119 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_worker_apply_index_path, method: :get do
+        .field.fieldset.center
+          h3 Worker Applies
+          .input-text
+            = text_field_tag :first_name, params[:first_name], placeholder: "First name", class: "col-md-5", style: "margin-right: 10px;"
+            = text_field_tag :last_name, params[:last_name], placeholder: "Last name", class: "col-md-5"
+            = text_field_tag :phone, params[:phone], placeholder: "Phone", class: "col-md-5"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      Strong Worker apply
+      Strong
+        | Count: #{@form.count}
+      .clear
+    .cell
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th
+              | ID
+            th
+              | Name
+            th
+              | Phone
+            th
+              | activate lt
+            th
+              | activate qh
+            th
+              | disable
+        tbody
+          -@form.each_with_index do |form|
+            tr.clickable data-toggle="collapse"
+              td = form.id
+              td = form.last_name+form.first_name
+              td = form.phone
+              td = link_to 'actlt', activate_as_lt_admin_worker_apply_path(form),
+                method: :activate_as_lt,
+                data:{confirm: 'Please confirm'},
+                class: 'btn btn-info'
+              td = link_to 'actqh', activate_as_qh_admin_worker_apply_path(form),
+                method: :activate_as_qh,
+                data:{confirm: 'Please confirm'},
+                class: 'btn btn-info'
+              td = link_to 'disable', disable_admin_worker_apply_path(form),
+                method: :disable,
+                data:{confirm: 'confirm disable'},
+                class: 'btn btn-info'
+            tr
+              td colspan="12"
+                div.collapse
+                  .row
+                    .col-md-6
+                      ul.list-group
+                        li.list-group-item
+                          span dob:
+                          | #{form.dob}
+                        li.list-group-item
+                          span email:
+                          | #{form.email}
+                        li.list-group-item
+                          span edu level:
+                          | #{form.edu_level}
+                        li.list-group-item
+                          span nav place:
+                          | #{form.nav_place}
+                        li.list-group-item
+                          span home address:
+                          | #{form.home_address}
+                    .col-md-6
+                      ul.list-group
+                        li.list-group-item
+                          span start date:
+                          | #{form.start_date}
+                        li.list-group-item
+                          span available from:
+                          | #{form.available_from}
+                        li.list-group-item
+                          span available to:
+                          | #{form.available_to}
+                        li.list-group-item
+                          span begin time:
+                          | #{form.begin_time}
+                        li.list-group-item
+                          span end time:
+                          | #{form.end_time}
+                  .row
+                    - if !form.helps.nil?
+                      .col-md-6
+                        ul.list-group
+                          li.list-group-item
+                            span helps:
+                            - for holp in form.helps
+                                span = holp
+                    - if !form.sicknesses.nil?
+                      .col-md-6
+                        ul.list-group
+                          li.list-group-item
+                            span sicknesses:
+                            - for suckness in form.sicknesses
+                              span = suckness
+                  .row style="margin-left: 0px; margin-right: 0px;"
+                    h3 uploaded files:
+                    - form.worker_files.each do |doc|
+                      ul style="list-style-type:disc"
+                        li
+                          = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", target: "_blank"
+                          span
+                            |  :  #{doc.doc_type}
+      = paginate @form
+
+javascript:
+  App.ClientApplyAdmin();

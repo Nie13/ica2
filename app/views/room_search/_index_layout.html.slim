@@ -10,13 +10,18 @@
   link_hash: link_hash
 
 .container-fluid.center.create-new-post-section
+  .input-text.triple-input
+    = text_field_tag :available_from, params[:available_from], placeholder: 'available from', class: 'datepicker col-md-5'
+    = text_field_tag :available_to, params[:available_to], placeholder: 'available to', class: 'datepicker col-md-5'
+  .searchbtn
+    = image_submit_tag("btn-search.jpg", class: "input-class btn-search")
   h2
     | 找到 #{total_post_count} 服务
 
-  - if current_account.role != 'user'
-    a.btn.sublet-btn.letter-spaced [
-      href="#{new_path}"
-    ] + 发布你的服务
+  /- if current_account.role != 'user'
+    /a.btn.sublet-btn.letter-spaced [
+      /href="#{new_path}"
+    /] + 发布你的服务
 
 .container-fluid.center.sublet-list
   - posts.each_slice(4) do |post_group|

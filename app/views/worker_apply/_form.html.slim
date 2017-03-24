@@ -1,0 +1,246 @@
+.form-selection.row#work-option
+  h3 = t ".ques"
+  /.col-xs-6.col-sm-4.col-md-offset-2.student
+    /= f.radio_button :is_employed, false, id: "student"
+    /label for="student" = t ".student"
+  /.col-xs-6.col-sm-4.col-md-offset-1.employed
+    /= f.radio_button :is_employed, true, id: "employed"
+    /label for="employed" = t ".employed"
+
+#client-fields
+  h3 = t ".basic"
+
+  .form-group
+    = f.label :first_name, "first_name", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :first_name, class: 'form-control', required: true
+
+  .form-group
+    = f.label :last_name, "last_name", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :last_name, class: 'form-control', required: true
+
+  .form-group
+    = f.label :dob, "dob", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :dob, class: 'form-control date-format', placeholder: "mm/dd/yyyy", required: true
+
+  .form-group
+    = f.label :phone, "phone", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :phone, class: 'form-control', required: true
+
+  .form-group
+    = f.label :email, "email", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :email,class: 'form-control', required: true
+
+  .form-group
+    = f.label :start_date, "start_date", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :start_date, class: 'form-control date-format', placeholder: "mm/dd/yyyy", required: true
+
+  .form-group
+    = f.label :edu_level, "edu_level", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :edu_level, class: 'form-control', required: true
+
+  .form-group
+    = f.label :nav_place, "nav_place", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :nav_place, class: 'form-control', required: true
+
+  .form-group
+    = f.label :home_address, "home_address", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :home_address, class: 'form-control', required: true
+
+  .form-group
+    = f.label :salary_quest, "salary_quest", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :salary_quest, class: 'form-control', required: true
+
+  .form-group
+    = f.label :available_from, "available_from", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :available_from, class: 'form-control date-format', placeholder: "mm/dd/yyyy", required: true
+
+  .form-group
+    = f.label :available_to, "available_to", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :available_to, class: 'form-control date-format', placeholder: "mm/dd/yyyy", required: true
+
+  .form-group
+    = f.label :begin_time, "begin_time", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :begin_time, class: 'form-control', required: true
+
+  .form-group
+    = f.label :end_time, "end_time", class: 'col-sm-6'
+    .col-sm-6
+      = f.text_field :end_time, class: 'form-control', required: true
+
+
+
+
+  /h3 = t ".addr"
+
+  /.form-group
+    /= f.label :curr_street, t(".street"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :curr_street, class: 'form-control small-ip', required: true
+
+  /.form-group
+    /= f.label :curr_city, t(".city"), class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :curr_city, class: 'form-control small-ip', required: true
+
+  /.form-group
+    /= f.label :curr_state, t(".state"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :curr_state, class: 'form-control small-ip', required: true
+
+  /.form-group
+    /=f.label :curr_country, t(".country"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :curr_country, class: 'form-control small-ip', required: true
+
+  /.form-group
+    /=f.label :curr_zip, t(".zip"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :curr_zip, class: 'form-control small-ip', required: true
+
+  /.form-group
+    /= f.label :current_landlord, t(".landlord"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :current_landlord, class: 'form-control', required: true, placeholder: t(".landlord_place")
+
+  /.form-group
+    /= f.label :current_landlord_ph, t(".lordphone"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :current_landlord_ph, class: 'form-control', required: true
+
+  /.form-group
+    /= f.label :current_rent, t(".rent"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :current_rent, class: 'form-control', required: true, placeholder: t(".rent_place")
+
+
+  /h3 = t ".income"
+
+  /.form-group
+    /= f.label :position, t(".position"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :position, class: 'form-control', required: true
+
+  /.form-group#company-field
+    /= f.label :company, t(".company"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :company, class: 'form-control', required: true
+
+  /.form-group#school-field
+    /= f.label :company, t(".school"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :company, class: 'form-control', required: true
+
+  /.form-group
+    /= f.label :start_date, t(".startdate"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :start_date, class: 'form-control date-format', required: true, placeholder: "mm/dd/yyyy"
+
+  /.form-group
+    /= f.label :salary, t(".salary"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :salary, class: 'form-control', required: true, placeholder: t(".salary_place")
+
+  /h3 = t ".pets"
+
+  /.form-group
+    /= f.label 'qpets', t(".qpets"), class: 'col-sm-6'
+    /.col-sm-3.col-xs-6.radios
+        /= radio_button_tag 'qpets', 'Yes'
+        /= t(".yes_opt")
+    /.col-sm-3.col-xs-6.radios
+        /= radio_button_tag 'qpets', 'No'
+        /= t(".no_opt")
+
+  /fieldset#pet-fields
+    /.form-group
+      /= f.label :pet, t(".if_yes"), class: 'col-sm-6'
+      /.col-sm-3.col-xs-6.radios
+        /= f.radio_button :pet, t(".dog")
+        /= t(".dog")
+      /.col-sm-3.col-xs-6.radios
+        /= f.radio_button :pet, t(".cat")
+        /= t(".cat")
+
+    /.form-group
+      /=f.label :breed, t(".breed"),class: 'col-sm-6'
+      /.col-sm-6
+        /= f.text_field :breed, class: 'form-control small-ip', required: true
+
+    /.form-group
+      /=f.label :pet_name, t(".name"),class: 'col-sm-6'
+      /.col-sm-6
+        /= f.text_field :pet_name, class: 'form-control small-ip', required: true
+    /.form-group
+      /=f.label :pet_age, t(".age"),class: 'col-sm-6'
+      /.col-sm-6
+        /= f.text_field :pet_age, class: 'form-control small-ip', required: true
+
+    /.form-group
+      /=f.label :pet_weight, t(".weight"),class: 'col-sm-6'
+      /.col-sm-6
+        /= f.text_field :pet_weight, class: 'form-control small-ip', required: true
+
+  /h3 = t ".emergency"
+
+  /.form-group
+    /= f.label :emergency_name, t(".ename"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :emergency_name, class: 'form-control', required: true
+
+  /.form-group
+    /= f.label :emergency_addr, t(".eaddr"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :emergency_addr, class: 'form-control', required: true
+
+  /.form-group
+    /= f.label :emergency_phone, t(".ephone"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :emergency_phone, class: 'form-control', required: true
+
+  /.form-group
+    /= f.label :emergency_relation, t(".erel"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.text_field :emergency_relation, class: 'form-control', required: true
+
+  /.form-group
+    /= f.label :referral, t(".add_info"),class: 'col-sm-6'
+    /.col-sm-6
+      /= f.select :referral, [t(".relation"), 'cityspade.com',t('.newmedia3'),'Columbia University CSSA', t(".newmedia1"), t(".newmedia2"), t(".other")], {prompt: t(".select")}, {class: 'form-control'}
+      //= f.select :referral, ['Friend','cityspade.com','NYU CSSA BBS','Columbia University CSSA','Dealmoon/Weibo','WeChat','Other'], {prompt: "Please select an option"}, {class: 'form-control'}
+
+  .form-group
+    = f.label :sicknesses, "sickness", class: 'col-sm-6'
+    - sicknesses = Settings.account_details["sicknesses"]
+    .col-sm-6
+      /-(1..7).each do |x|
+      - for suckness in sicknesses
+        .options
+          = f.check_box :sicknesses, {multiple: true}, suckness, false
+          span = suckness
+          /span =(".opt#{x}")
+
+  .form-group
+    = f.label :helps, "helps", class: 'col-sm-6'
+    - helps = Settings.account_details["need_helps"]
+    .col-sm-6
+      /-(1..7).each do |x|
+      - for holp in helps
+        .options
+          = f.check_box :helps, {multiple: true}, holp, false
+          span = holp
+  .submit-btn
+    /= submit_tag t(".submit"), class: "btn btn-default"
+    = f.button t(".continue"), id: "next-btn", type: "button", class: "btn btn-default"

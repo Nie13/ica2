@@ -113,10 +113,10 @@
         = room_detail.text_area :description, required: true,
           placeholder: "具体为您的服务提供描述"
 
-      /.form-group
-        /label 上传图片
+      .form-group
+        label 上传图片
 
-        /= render 'tmpls/photo'
+        = render 'tmpls/photo'
 
         #roomImageForm.uploadify
           - if @images

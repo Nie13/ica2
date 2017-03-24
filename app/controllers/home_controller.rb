@@ -10,8 +10,8 @@ class HomeController < ApplicationController
     # session[:redirect_to] = root_path
 
     #flash sale listings, take only 6 from the group
-    @listings = Listing.where(is_flash_sale: true, status: 0).order(video_url: :desc)
-    @listings = @listings[0..5]
+    #@listings = Listing.where(is_flash_sale: true, status: 0).order(video_url: :desc)
+    #@listings = @listings[0..5]
   end
 
   def sitemap
