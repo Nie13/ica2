@@ -55,7 +55,7 @@ CitySpade::Application.routes.draw do
   get '/workerapply' => 'worker_apply#new'
   match '/workerapply/create' => 'worker_apply#create', via: [:get, :post]
   get '/workerapply/confirm' => 'worker_apply#confirmation'
-  
+
   resources :roommates, path: 'qhlists' do
    collection do
      match :send_message, via: [:post, :get]
@@ -217,6 +217,13 @@ CitySpade::Application.routes.draw do
       end
     end
     resources :search_records, only: [:index, :destroy]
+    resources :worker_applies, path: "apply" do
+      member do
+        post 'activate_as_lt'
+        post 'activate_as_qh'
+        post 'disable'
+      end
+    end
     resources :week_listings, only: [:index]
     resources :page_views, only: [:index]
     resources :political_areas, expect: [:show, :create]

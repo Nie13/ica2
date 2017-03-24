@@ -24,7 +24,8 @@ module Admin::BaseHelper
         #['Political Area', admin_political_areas_path],
         #['Search for Me', admin_search_for_mes_path],
         ['LT list', admin_rooms_path],
-        ['QH list', admin_roommates_path]
+        ['QH list', admin_roommates_path],
+        ['Worker Apply', admin_worker_applies_path]
       ]
     }]
   end

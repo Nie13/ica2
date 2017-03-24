@@ -7,7 +7,7 @@ class MailerBase  < ActionMailer::Base
     if Rails.env.production? || email =~ /showmetherent/
       email
     else
-      'cityspade.dev@gmail.com'
+      'vvlll2flri@outlook.com'
       # Settings.email.bcc
     end
   end
