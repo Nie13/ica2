@@ -9,35 +9,35 @@
           .sign_up_notice.pull-left
             - if controller_name == 'reviews'
           	  p
-                | Join CitySpade 
+                | Join CitySpade
               p
                 | to complete your review
             - else
               p
-                | Join CitySpade to save 
-              p
-                | this project to wishlist
+                | 注册成为I-CARE会员
           	span
-          	  | Already a member?
+          	  | 已注册过?
               a#to_sign_in href="#sign_in" role="button" data-toggle="modal" data-target="#sign_in" data-dismiss='modal' aria-hidden=true
 
-          	    | &nbsp Log in →
+          	    | &nbsp 登录 →
 
       .modal-body
-        = link_to account_omniauth_authorize_path(:facebook), class: 'signup-facebook' do
-          img src=asset_path('signup_facebook.jpg')
-        .signup-notice-wrapper  
-          h6.signup-notice
-            span or sign up using your email
-        h6.signup-notice-mobile or sign up using your email  
-        .signup-box      
+        .signup-box
           = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :format => :json, :remote => true) do |f|
             - resource.errors.full_messages.each do |msg|
               li
-                = msg 
-            = f.text_field :first_name, :autofocus => true, :placeholder => "Your First Name", class: 'textfield'
-            = f.text_field :last_name, :placeholder => "Your Last Name", class: 'textfield'
-            = f.email_field :email, :autofocus => true, :placeholder => "Your Email Address", class: 'textfield'
-            = f.password_field :password, :placeholder => "Choose a Password", class: 'textfield'
-            = f.password_field :password_confirmation, :placeholder => "Repeat your password", class: 'textfield'
-            = f.submit "Get Started", class: 'btn-custom'
+                = msg
+            = f.text_field :last_name, :autofocus => true, :placeholder => "姓", class: 'textfield'
+            = f.text_field :first_name, :placeholder => "名", class: 'textfield'
+            = f.email_field :email, :autofocus => true, :placeholder => " 邮箱", class: 'textfield'
+            = f.text_field :birth_date, :placeholder => "出生日期（yyyy-mm-dd)", class: 'textfield'
+            = f.password_field :password, :placeholder => "密码", class: 'textfield'
+            = f.password_field :password_confirmation, :placeholder => "重复密码", class: 'textfield'
+            p
+              |
+            .row
+              = f.radio_button :role, "user", id: "user", required: true
+              label for="user" 注册为用户
+              = f.radio_button :role, "worker", id: "worker", required: true
+              label for="worker" 注册为护工
+            = f.submit "注册", class: 'btn-custom'

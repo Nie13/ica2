@@ -7,15 +7,15 @@ class RoommatesController < ApplicationController
       .page(params[:page]).per(24)
 
     link_hash = {
-      "All Posts" => roomsearch_path,
-      "Room Offers" => rooms_path
+      "所有服务列表" => alllists_path,
+      "LT服务列表" => rooms_path
     }
 
     render "room_search/_index_layout",
       locals: {
       total_post_count: sorted_roommates.count,
         posts: roommates,
-        heading: "ROOMMATES",
+        heading: "获取所有的QH服务列表",
         new_path: new_roommate_path,
         link_hash: link_hash
       }
@@ -24,7 +24,7 @@ class RoommatesController < ApplicationController
   def show
     @roommate = Roommate.find(params[:id])
     if @roommate.expired?
-      flash[:notice] = "This roommate request may have expired"
+      flash[:notice] = "服务过期"
     end
   end
 
@@ -42,7 +42,7 @@ class RoommatesController < ApplicationController
     end
     if current_account.logined_facebook?
       if @roommate.save
-        flash[:notice] = "New roommate offer posted"
+        flash[:notice] = "已发布新QH服务"
         redirect_to @roommate
       else
         flash[:alert] = @roommate.errors.full_messages.join(", ")
@@ -65,13 +65,13 @@ class RoommatesController < ApplicationController
   def expire
     @roommate = Roommate.find(params[:roommate_id])
     @roommate.expired!
-    redirect_to roommates_path, notice: "Successfully expired roommate request"
+    redirect_to roommates_path, notice: "服务已过期"
   end
 
   def update
     @roommate = Roommate.find(params[:id])
     if @roommate.update(roommate_params)
-      flash[:notice] = "Roommate offer updated"
+      flash[:notice] = "QH服务已更新"
       redirect_to @roommate
     else
       flash[:alert] = @roommate.errors.full_messages.join(", ")
@@ -83,7 +83,7 @@ class RoommatesController < ApplicationController
     @roommate = Roommate.find(params[:id])
     @roommate.destroy
     respond_to do |format|
-      format.html { redirect_to roommates_url, notice: 'Roommate offer was successfully removed.' }
+      format.html { redirect_to roommates_url, notice: 'QH服务已删除' }
       format.json { head :no_content }
     end
   end

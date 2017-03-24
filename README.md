@@ -1,4 +1,4 @@
-## 美国租房项目
+## icare2
 ### 开发环境
 1. Mysql 5.5 以上
 2. rails 4.1.4, ruby 2.1以上
@@ -13,14 +13,6 @@ sunspot:solr:reindex`
 每次push代码前请运行 'rake spec'，以检查测试是否通过。
 #### 数据准备
 把开发数据还原到test 数据库
-
-###DB简述：
-1. Listing， 房产信息
-2. ListingUrl,
-   房产连接（可能存在，同一个房产多个连接，如：在不同网站发布同一房产信息）
-3. ListingImage, 图片
-4. ZipcodeArea， zipcode 与行政区域（political_areas） 关系
-5. PoliticalArea, 行政区域关系，如 country， neighborhood等
 
 ###前端开发简述：
 1. 使用slim作为前端模板，Sass代替CSS，CoffeeScript代替JavaScript开发

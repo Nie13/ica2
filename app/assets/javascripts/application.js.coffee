@@ -15,7 +15,6 @@
 #= require common
 #= require jquery.qeditor
 #= require bootstrap-datetimepicker
-#= require olark_instant
 #= require pcs/app
 #= require_tree ./pcs
 

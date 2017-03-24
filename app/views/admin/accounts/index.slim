@@ -6,32 +6,34 @@
           legend
             | User
           .input-text
-            = text_field_tag :first_name, params[:first_name], placeholder: "First name", class: "col-md-5"
             = text_field_tag :last_name, params[:last_name], placeholder: "Last name", class: "col-md-5"
+            = text_field_tag :first_name, params[:first_name], placeholder: "First name", class: "col-md-5"
           .radio-btns
             label.radio.list-inline
-              | Admin
+              | 管理员
               = radio_button_tag :role, 'admin', params[:role] == "admin"
             label.radio.list-inline
-              | User
+              | 用户
               = radio_button_tag :role, 'user', params[:role] == "user"
             label.radio.list-inline
-              | Office
-              = radio_button_tag :role, 'office', params[:role] == "office"
-            label.radio.accheckbox.list-inline
-              | Facebook Account  
-              = check_box_tag :bind_facebook, 'true', params[:bind_facebook] == 'true'
+              | 护工
+              = radio_button_tag :role, 'worker', params[:role] == "worker"
+
+            /label.radio.accheckbox.list-inline
+              /| Facebook Account
+              /= check_box_tag :bind_facebook, 'true', params[:bind_facebook] == 'true'
+
           .searchbtn
             = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
 
 .row
   .box.col-md-12
     .cell
-      | Users |
-      p.total 
-        |  Total: #{@accounts.total_count} 
+      | 帐户 |
+      p.total
+        |  共: #{@accounts.total_count}
         | &nbsp;&nbsp;&nbsp;&nbsp;
-        = link_to  'New Account', new_admin_account_path
+        = link_to  '新建帐户', new_admin_account_path
 
     .cell
       table.table.table-striped
@@ -43,7 +45,8 @@
               = sortable "accounts.first_name", "Name"
             th
               = sortable "accounts.role", "Role"
-            th Facebook Account?
+
+            /th Facebook Account?
             th Edit
         tbody
           - @accounts.each do |account|
@@ -51,12 +54,13 @@
               td = account.id
               td = account.name
               td = account.role
-              th = account.bind_facebook?
+              /th = account.bind_facebook?
               td
                 = link_to "Edit", edit_admin_account_path(account), class: 'btn btn-info'
-                - if account.role?(:office)
-                  | &nbsp;
-                  = link_to "deactivated listings", url_for(deactive: true, account_id: account.id), class: 'btn btn-info', data:{confirm: 'Are you sure?'}
-                  | &nbsp;
-                  = link_to "Visit Listings", admin_listings_path(account_id: account.id), class: 'btn btn-info'
+
+                /- if account.role?(:office)
+                  /| &nbsp;
+                  /= link_to "deactivated listings", url_for(deactive: true, account_id: account.id), class: 'btn btn-info', data:{confirm: 'Are you sure?'}
+                  /| &nbsp;
+                  /= link_to "Visit Listings", admin_listings_path(account_id: account.id), class: 'btn btn-info'
       = paginate @accounts

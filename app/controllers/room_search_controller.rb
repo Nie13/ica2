@@ -6,15 +6,15 @@ class RoomSearchController < ApplicationController
     posts = Kaminari.paginate_array(all_posts).page(params[:page]).per(24)
 
     link_hash = {
-      "Roommates" => roommates_path,
-      "Room Offers" => rooms_path
+      "QH服务列表" => roommates_path,
+      "LT服务列表" => rooms_path
     }
 
     render "room_search/_index_layout",
       locals:{
         total_post_count: all_posts.count,
         posts: posts,
-        heading: "ALL POSTS",
+        heading: "获取所有的服务列表",
         new_path: new_room_path,
         link_hash: link_hash
       }

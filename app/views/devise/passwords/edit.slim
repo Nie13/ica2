@@ -1,6 +1,6 @@
 .global-container#password-edit
   .container
-    h2 Change your password
+    h2 修改密码
     hr
 
     = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
@@ -8,15 +8,15 @@
       = f.hidden_field :reset_password_token
 
       div
-        = f.label :password, "New password"
+        = f.label :password, "新密码"
         = f.password_field :password, :autofocus => true
 
       div
-        = f.label :password_confirmation, "Confirm new password"
+        = f.label :password_confirmation, "重复确认"
         = f.password_field :password_confirmation
 
       hr
       div
-        = f.submit "Change my password", class: 'btn-custom'
+        = f.submit "修改密码", class: 'btn-custom'
       br
       = render "devise/shared/links"

@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 CitySpade::Application.routes.draw do
-  resources :rooms do
+  resources :rooms, path: "ltlists" do
    collection do
      match :send_message, via: [:post, :get]
      match :save_wishlist, via: [:post, :get]
@@ -38,13 +38,21 @@ CitySpade::Application.routes.draw do
 
   get 'mail_notifies/unsubscribe', as: :unsubscribe_mail_notify
 
-  get '/roomsearch', to: 'room_search#index'
+  #get '/roomsearch', to: 'room_search#index'
+  get '/alllists', to: 'room_search#index'
+
+  #resources :room_search, path: "alllists" do
+  #end
+
+  #namespace :room_search, path: "alllists" do
+    #root :to => 'room_search#index'
+  #end
 
   get '/apply' => 'client_apply#new'
   match '/apply/create' => 'client_apply#create', via: [:get, :post]
   get '/apply/confirm' => 'client_apply#confirmation'
 
-  resources :roommates do
+  resources :roommates, path: 'qhlists' do
    collection do
      match :send_message, via: [:post, :get]
      post :expire
@@ -177,7 +185,7 @@ CitySpade::Application.routes.draw do
   get 'download' => "home#download"
 
   get "sitemap.xml" => "home#sitemap", format: :xml, as: :sitemap
-  get "robots.txt" => "home#robots", format: :text, as: :robots
+  #get "robots.txt" => "home#robots", format: :text, as: :robots
 
   namespace :admin do
     root :to => 'welcome#index'
@@ -211,12 +219,12 @@ CitySpade::Application.routes.draw do
     resources :search_for_mes, path: "searchforme", only: [:index]
     resources :client_checkins, path: "checkin", only: [:index]
     get '/bookings' => 'client_checkins#book_showing', as: 'bookings'
-    resources :rooms do
+    resources :rooms, path: 'LTlist' do
       member do
         post 'expire'
       end
     end
-    resources :roommates do
+    resources :roommates, path: 'QHlist' do
       member do
         post 'expire'
       end

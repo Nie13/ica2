@@ -108,7 +108,7 @@ module ApplicationHelper
 
   def display_beds_and_baths(listing)
     "#{display_bedrooms(listing)},
-    #{display_baths(listing)}#{display_sq_ft(listing) != nil ? ', ' + number_with_delimiter(listing.sq_ft.to_i).to_s + ' ft²' : nil}" 
+    #{display_baths(listing)}#{display_sq_ft(listing) != nil ? ', ' + number_with_delimiter(listing.sq_ft.to_i).to_s + ' ft²' : nil}"
   end
 
   def to_integer(float)
@@ -286,7 +286,7 @@ module ApplicationHelper
 
   def full_title
     @page_title || begin
-    base_title = 'CitySpade'
+    base_title = '优家陪护'
     if title.present?
       "#{title} | #{base_title}"
     else

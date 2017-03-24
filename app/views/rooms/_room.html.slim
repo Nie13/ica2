@@ -18,9 +18,9 @@
           h4.sublet-user-name = post.account.name
 
           p.sublet-type
-            | (Room Offer)
+            | LT
 
-          h5 Posted on #{post.created_at.strftime("%B %d, %Y")}
+          h5 发布于 #{post.created_at.strftime("%B %d, %Y")}
 
           - if post.political_area
             h5.sublet-location
@@ -30,11 +30,11 @@
         .row
           .sublet-budget.col-xs-6.center
             .all-caps-heading
-              | Rent / Month
+              | 薪资
             h3
               | $#{post.price_month}
           .sublet-date.col-xs-6
             .all-caps-heading
-              | Available From
+              | 开始时间
             h3
               = post.available_begin_at.strftime("%b %d")

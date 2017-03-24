@@ -6,9 +6,10 @@ class Roommate < ActiveRecord::Base
   serialize :pets_allowed, Array
   serialize :borough, Array
 
-  validates :about_me, length: {minimum: 140}
-  validates_presence_of :budget, :title, :move_in_date, :gender, :duration,
-    :title, :pets_allowed, :borough
+  validates :about_me, length: {minimum: 10}
+  validates_presence_of  :title, :move_in_date, :duration,
+    :title
+    #:budget, :gender, :pets_allowed, :borough
 
   alias_method :images, :photos
 

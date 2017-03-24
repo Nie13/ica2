@@ -12,6 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     @user = current_account
+    @user.sickness = current_account.sickness
     if @user.update_attributes(account_update_params)
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
@@ -47,6 +48,13 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def account_params
+    #if action_name == 'sign_up'
+      #params.require(:account).permit(:first_name, :last_name, :birth_date, :role)
+    #if action_name == 'update'
+      #params.require(:account).permit(:first_name, :last_name, :birth_date, :image, :first_phone, :last_phone, need_help: [], sickness: [])
+    #end
+    #else
     params.require(:account).permit(devise_parameter_sanitizer.for(:sign_up))
+    #end
   end
 end

@@ -1,3 +1,4 @@
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -38,8 +39,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :first_name << :last_name
-    devise_parameter_sanitizer.for(:account_update) << :first_name << :last_name << :image << [:first_phone, :last_phone]
+    devise_parameter_sanitizer.for(:sign_up) << :first_name << :last_name << :birth_date << :role
+    devise_parameter_sanitizer.for(:account_update) << :first_name << :last_name << :image << [:first_phone, :last_phone] << :birth_date << :need_help << :sickness << :start_time << :native_place << :edu_level << :home_address << :fastable << :salary_level
   end
   protected :configure_permitted_parameters
 
@@ -285,9 +286,9 @@ class ApplicationController < ActionController::Base
       else
         city_name = current_area.long_name
       end
-      @page_title = 'CitySpade: Apartments for Rent, Building and Neighborhood Reviews, Sublets and Rommates'
-      @page_description = 'Make smarter rental decisions through our building and neighborhood reviews. Let CitySpade connect you with your next dream apartment.'
-      @page_keywords = "CitySpade, apartments, buildings, neighborhoods, reviews, NO FEE apartments, apartments for rent, #{city_name} apartments, sublets, room, roommates"
+      @page_title = 'I-CARE Page Title Change Latter'
+      @page_description = 'I-CARE page description'
+      @page_keywords = "I-CARE page keywords"
     when 'search'
       if action_name == 'index'
         title = params[:title] || search_neighborhood_name
@@ -360,19 +361,21 @@ class ApplicationController < ActionController::Base
       @page_keyboards = 'CitySpade, no fee, apartment, rent, bonus, dailydeals, New York, NYC, studio, bed, bath, studio'
     when 'room_search', 'roommates','rooms'
       if action_name == 'index'
-        @page_description = 'CitySpade provides a platform to find suitable roommates and rooms for sublet in New York City.'
+        @page_description = '优家陪护为您提供护工服务'
+      else
+        @page_title = "优家陪护"
       end
-      @page_keywords = 'CitySpade, New York City, NYC, rooms, sublet, roommates, rent, room offer, apartment'
+      @page_keywords = '护工, 服务, 优家陪护'
     else
-      @page_title ||= 'CitySpade: Apartments for Rent, Building and Neighborhood Reviews, Sublets and Roommates'
-      @page_description ||= 'Make smarter rental decisions through our building and neighborhood reviews. CitySpade is here to help you with your apartment search in New York City.'
-      @page_keywords ||= 'CitySpade, apartments, buildings, neighborhoods, reviews, NO FEE apartments, apartments for rent, NYC apartments'
+      @page_title ||= '优家陪护为您提供护工服务'
+      @page_description ||= '优家陪护为您提供护工'
+      @page_keywords ||= '护工, 服务, 优家陪护'
     end
     if @page_title
       if params[:page]
         @page_title << ", Page #{params[:page]}"
       end
-      @page_title << " | CitySpade"
+      @page_title << " | 优家陪护"
     end
   end
 
