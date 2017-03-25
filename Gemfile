@@ -5,6 +5,8 @@ gem 'rails-observers'
 gem 'sass-rails'
 gem 'compass-rails', '~> 2.0.2'
 
+gem 'rake', '< 11.0'
+
 gem 'bootstrap-sass'
 # use uploadify instead
 # gem "jquery-fileupload-rails"
@@ -138,7 +140,8 @@ gem 'bcrypt'
 # gem 'progress_bar'
 
 # https://github.com/lassebunk/dynamic_sitemaps
-gem 'dynamic_sitemaps', github: 'lassebunk/dynamic_sitemaps', ref: ' 37bee'
+gem 'dynamic_sitemaps'
+#, github: 'lassebunk/dynamic_sitemaps', ref: ' 37bee'
 # Use unicorn as the app server
 # gem 'unicorn'
 
