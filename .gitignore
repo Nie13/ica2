@@ -12,7 +12,6 @@ tmp/*
 /.zeus.sock
 /solr
 /config/sunspot.yml
-/config/database.yml
 /db/*.sql
 nohup.out
 /public/uploads
