@@ -1,0 +1,10 @@
+h1
+  | reviews
+button.room-contact-btn data-toggle="modal" data-target="#reviewModal"
+  span
+  br
+  | SendReview
+- if !@room.reputations.nil?
+  - for reputa in @room.reputations
+    h1
+      = reputa.account_id

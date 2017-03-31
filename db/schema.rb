@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321081556) do
+ActiveRecord::Schema.define(version: 20170330055435) do
 
   create_table "account_inboxes", force: true do |t|
     t.integer  "account_id"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170321081556) do
   end
 
   add_index "accounts", ["api_key"], name: "index_accounts_on_api_key", using: :btree
-  add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
+  add_index "accounts", ["email"], name: "index_accounts_on_email", using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
 
   create_table "address_translators", force: true do |t|

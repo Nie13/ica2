@@ -1,0 +1,20 @@
+.modal.fade#reviewModal tabindex="-1" role="dialog"
+  .modal-dailog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" &times;
+        h4.modal-title.center Review to #{@room.account.last_name} #{@room.account.first_name}
+      .modal-body
+        = form_tag '/rooms/review', id: "review-modal-form" do
+          = hidden_field_tag 'room_id', params[:id]
+          /.form-group
+            /= text_field_tag 'Name', nil, placeholder: '您的姓名:', class: "form-control", required: true
+          /.form-group
+            /= text_field_tag 'Email', "#{current_account.try(:email)}", placeholder: 'Your E-Mail:', class: "form-control", id: "contact-email", type: "email", required: true
+          /.form-group
+            /= text_field_tag 'Phone', nil, placeholder: '您的电话（可选）:', class: "form-control"
+          .form-group
+            - my_text = "Review Description"
+            = text_area_tag 'Description', my_text, class: "form-control", id: "review-description", rows: 10
+          .form-group.text-center
+            = submit_tag 'Review', class: "btn btn-default", id: "review-send-btn"

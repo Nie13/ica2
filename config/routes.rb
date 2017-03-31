@@ -48,10 +48,10 @@ CitySpade::Application.routes.draw do
     #root :to => 'room_search#index'
   #end
 
-  get '/apply' => 'client_apply#new'
-  match '/apply/create' => 'client_apply#create', via: [:get, :post]
-  get '/apply/confirm' => 'client_apply#confirmation'
-
+  #get '/apply' => 'client_apply#new'
+  #match '/apply/create' => 'client_apply#create', via: [:get, :post]
+  #get '/apply/confirm' => 'client_apply#confirmation'
+  
   get '/workerapply' => 'worker_apply#new'
   match '/workerapply/create' => 'worker_apply#create', via: [:get, :post]
   get '/workerapply/confirm' => 'worker_apply#confirmation'
@@ -114,8 +114,9 @@ CitySpade::Application.routes.draw do
   resources :account_inboxes, only: [:destroy]
 
   devise_for :accounts,
-    :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations", :sessions=> :sessions  },
-    :path=> '', :path_names => {:sign_in => '/log_in', :sign_out => '/logout'}
+    :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations", :sessions=> :sessions  }
+    #,
+    #:path=> '', :path_names => {:sign_in => '/log_in', :sign_out => '/logout'}
 
   devise_scope :account do
     get 'account/profile', to: 'registrations#edit', as: :edit_account
@@ -140,6 +141,8 @@ CitySpade::Application.routes.draw do
   get "home/index"
   get "/account", to: "accounts#show"
   get "/accounts/verify_office", to: "accounts#verify_office"
+
+  get "/log_in", to: "registrations#create"
 
   get "/authenticate", to: "accounts#authenticate"
 

@@ -3,6 +3,7 @@ class SearchController < ApplicationController
   before_action :check_search_url, :only => :index
   # after_action :process_worker, only: :index
   after_action :save_search_record, only: :index, unless: ->  { @exception_flag}
+<<-DOC
   def index
     session[:s_r] = nil
     opt = params.dup
@@ -51,7 +52,7 @@ class SearchController < ApplicationController
         @listings = @listings.page(params[:page]).per(listing_per_num)
       end
     @for_sales_or_rentals_count = Listing.where(flag: session[:listing_flag]).enables.all_listings_of_area(current_area).count
-    end 
+    end
   end
 
   def sort_featured_two_per_page(listings, featured_listings)
@@ -196,4 +197,5 @@ class SearchController < ApplicationController
   def listing_per_num
     mobile? ? 25 : Listing.default_per_page
   end
+DOC
 end

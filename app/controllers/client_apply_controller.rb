@@ -6,11 +6,11 @@ class ClientApplyController < ApplicationController
 
   def create
     info = params
-    mail = RoomContactMailer.client_application(info)
-    if mail.deliver
-      redirect_to apply_confirm_path
-    else
-      render :new
+    #mail = RoomContactMailer.client_application(info)
+    #if mail.deliver
+      #redirect_to apply_confirm_path
+    #else
+      #render :new
     end
   end
 

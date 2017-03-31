@@ -84,12 +84,12 @@
 #   end
 #
    Notifier::Mail.defaults do |mail|
-     mail.from                 = 'cityspade@gmail.com'
-     mail.to                   = 'cityspade@gmail.com'
-     mail.address              = 'smtp.gmail.com'
+     mail.from                 = 'vvlll2flri@outlook.com'
+     mail.to                   = 'vvlll2flri@outlook.com'
+     mail.address              = 'smtp.outlook.com'
      mail.port                 = 587
-     mail.domain               = 'gmail.com'
-     mail.user_name            = 'cityspade'
+     mail.domain               = 'outlook.com'
+     mail.user_name            = 'vvlll2flri'
      mail.password             = 'cityspade@nyc'
      mail.authentication       = 'plain'
      mail.encryption           = :starttls

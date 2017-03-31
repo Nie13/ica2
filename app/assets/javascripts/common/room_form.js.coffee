@@ -40,10 +40,19 @@ class RoomForm
 class RoomIndex
   constructor: ->
     @tooltipInit()
+    @datePicker()
 
   tooltipInit: ->
     # Bootstrap Tooltip
     $('[data-toggle="tooltip"]').tooltip()
+
+  datePicker: ->
+    $('#available_from').pickadate({
+      min: new Date(Date.today)
+    })
+    $('#available_to').pickadate({
+      min: new Date(Date.today)
+    })
 
   @setup: ->
     new RoomIndex
