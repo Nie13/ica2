@@ -2,6 +2,7 @@ class Roommate < ActiveRecord::Base
   enum status: %w(active expired)
   belongs_to :account
   has_many :photos, as: :imageable, dependent: :destroy
+  has_many :reputations, as: :reputable, dependent: :destroy
 
   serialize :pets_allowed, Array
   serialize :borough, Array

@@ -78,7 +78,7 @@ class RoomsController < ApplicationController
       end
 
     else
-      flash[:alert] = "You must be signed into your facebook account!"
+      flash[:alert] = "sign in needed"
       render :new
     end
   end
@@ -116,7 +116,7 @@ class RoomsController < ApplicationController
     email = params[:Email]
     description = params[:Description]
     phone = params[:Phone]
-    subject = "[CitySpade] #{name} is Interested in Subletting Your Room"
+    subject = "#{name} is Interested"
     body = "Contact Info:\nName: #{name}\nEmail: #{email}\n"
     if !phone.empty?
       body << "Phone: #{phone}\n"
@@ -140,6 +140,26 @@ class RoomsController < ApplicationController
       Reputation.create({reputable: @room, category: 'room', account_id: current_account.id})
       respond_to do |format|
         format.html { redirect_to @room, flash: {notice: "已存至愿望单"}}
+      end
+    end
+  end
+
+  def add_to_room_cart
+    @room = Room.find(params[:room_id])
+    if current_account.room_carted? @room
+      reputation = current_account.get_room_carted(@room)
+      reputation.destroy
+      respond_to do |format|
+        format.html{ redirect_to @room, flash: {notice:"discarted"}}
+      end
+    elsif Reputation.where(category: "ltcart", account_id: current_account.id).count != 6
+      Reputation.create({reputable: @room, category: 'ltcart', account_id: current_account.id})
+      respond_to do |format|
+        format.html { redirect_to @room,flash: {notice: "carted"}}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @room,flash: {notice: "cannot cart for more than 6!!!!"}}
       end
     end
   end

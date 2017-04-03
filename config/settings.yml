@@ -21,25 +21,25 @@ defaults: &defaults
     - 'Office Building'
     - 'Vacant Land'
   aws:
-    access_key_id: 'AKIAIIE6L57DP45S7IEA'
-    secret_access_key: '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'
+    access_key_id: ''
+    secret_access_key: ''
     s3_bucket: "cityspade-<%= Rails.env %>"
-    email_address: 'cityspade@gmail.com'
+    email_address: 'vvlll2flri@outlook.com'
   omniauth:
-    facebook_id: '334936550181312'
+    #facebook_id: '334936550181312'
       #'341964616145172' for tset
       #'432521193545372'
-    facebook_secret: '160e54b5495c0b877ef7ee630c001e03'
+    #facebook_secret: '160e54b5495c0b877ef7ee630c001e03'
       #'e0d5e54fd5484d0dfff33e4f17304cf' for test
       #'52ffccd51ffd6fbbce2ddc5a523ed849'
   foursquare:
-    client_id: 'DG5EJMTETBXUMNCEZWNHGBCDVSH1IXE4KBJM2XEMFQQ0MFXT'
-    client_secret: 'RP0DZR5RCIHF5NGJT1YDZ5YLC4N1YKAZK4AHUD3NMAIKQ2X1'
+    #client_id: 'DG5EJMTETBXUMNCEZWNHGBCDVSH1IXE4KBJM2XEMFQQ0MFXT'
+    #client_secret: 'RP0DZR5RCIHF5NGJT1YDZ5YLC4N1YKAZK4AHUD3NMAIKQ2X1'
   yelp:
-    consumer_key: 'Ls9K7B8qGdKEEm6rsv3v0g'
-    consumer_secret: 'ZUW-GEE0n8zVNUOPktC3ypKRM1g'
-    token: 'tkTt8PbdbJBeGtcExJRbzbJ1KbaXPei2'
-    token_secret: '9bvjp2Q1Go2IHenqD9OYtNyqo1Q'
+    #consumer_key: 'Ls9K7B8qGdKEEm6rsv3v0g'
+    #consumer_secret: 'ZUW-GEE0n8zVNUOPktC3ypKRM1g'
+    #token: 'tkTt8PbdbJBeGtcExJRbzbJ1KbaXPei2'
+    #token_secret: '9bvjp2Q1Go2IHenqD9OYtNyqo1Q'
   proxy_host: #'172.31.36.72'
   proxy_port: #'4127'
   cities:
@@ -199,12 +199,12 @@ defaults: &defaults
         #- "AIzaSyBnM2zSxmK7Uv-3JlLY9bzu2H2NEQvyKdw"
         #- "AIzaSyA5QYpST52lw_XYdT3lfBe65WMgaYSFIb4"
     brower_key: 'AIzaSyAiiGNdYlBOpgSP_-EA3kR7xuEGsQNp7pA'
-  site_url: 'http://cityspade.com'
+  #site_url: 'http://cityspade.com'
   external_links:
-    facebook: 'https://www.facebook.com/cityspade'
-    twitter: 'https://www.twitter.com/cityspade'
-    pinterest: 'https://www.pinterest.com/cityspade'
-    linkedin: 'https://www.linkedin.com/company/cityspade-inc-'
+    #facebook: 'https://www.facebook.com/cityspade'
+    #twitter: 'https://www.twitter.com/cityspade'
+    #pinterest: 'https://www.pinterest.com/cityspade'
+    #linkedin: 'https://www.linkedin.com/company/cityspade-inc-'
   email:
     noreply: 'CitySpade<vvlll2flri@outlook.com>'
     contact: 'CitySpade<vvlll2flri@outlook.com>'
@@ -498,48 +498,48 @@ defaults: &defaults
 #for user sickness and need
   account_details:
     sicknesses:
-      - "糖尿病"
-      - "心脏病"
-      - "高血压"
-      - "中风史"
-      - "阿尔兹海默"
-      - "癫痫"
-      - "肺部疾病"
+      - "TANGNIAOBING"
+      - "XINZANGBING"
+      - "GAOXUEYA"
+      - "ZHONGFENGSHI"
+      - "AERZIHAIMO"
+      - "DIANXIAN"
+      - "FEIJI"
     need_helps:
-      - "做饭/营养"
-      - "喂食"
-      - "出行照顾/有驾照"
-      - "照料行动不便"
-      - "照料卧床老人"
-      - "用药提醒"
-      - "洗澡"
+      - "ZUOFAN"
+      - "WEISHI"
+      - "CHUXINZHAOGU"
+      - "ZHAOLIAOXINGDONGBUBIAN"
+      - "ZHAOLIAOWOCHUANG"
+      - "YONGYAOTIXING"
+      - "XIZAO"
 
 development:
   <<: *defaults
   email:
-    noreply: 'CitySpade<noreply@cityspade.com>'
-    contact: 'dev@cityspade.com'
-    system: 'dev@cityspade.com'
-    bcc: 'cityspade.dev@gmail.com'
+    noreply: 'CitySpade<vvlll2flri@outlook.com>'
+    contact: 'vvlll2flri@outlook.com'
+    system: 'vvlll2flri@outlook.com'
+    bcc: 'vvlll2flri@outlook.com'
     list_with_us:
-      - 'cityspade@gmail.com'
-      - 'cityspade.dev@gmail.com'
+      - 'vvlll2flri@outlook.com'
+      - 'vvlll2flri@outlook.com'
 test:
   <<: *defaults
   email:
-    noreply: 'test@cityspade.com'
-    contact: 'test@cityspade.com'
-    system: 'test@cityspade.com'
-    bcc: 'cityspade.dev@gmail.com'
+    noreply: 'vvlll2flri@outlook.com'
+    contact: 'vvlll2flri@outlook.com'
+    system: 'vvlll2flri@outlook.com'
+    bcc: 'vvlll2flri@outlook.com'
 staging:
   <<: *defaults
   email:
-    noreply: 'staging@cityspade.com'
-    contact: 'staging@ctyspade.com'
-    system: 'staging@cityspade.com'
-    bcc: 'cityspade.dev@gmail.com'
+    noreply: 'vvlll2flri@outlook.com'
+    contact: 'vvlll2flri@outlook.com'
+    system: 'vvlll2flri@outlook.com'
+    bcc: 'vvlll2flri@outlook.com'
     list_with_us:
-      - 'cityspade@gmail.com'
-      - 'cityspade.dev@gmail.com'
+      - 'vvlll2flri@outlook.com'
+      - 'vvlll2flri@outlook.com'
 production:
   <<: *defaults

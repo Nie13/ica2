@@ -1,5 +1,5 @@
 = render "form_header"
 = render 'form', room: @room
 
-- if current_account.nil? 
-  = render 'shared/facebook_modal'
+- if current_account.nil?
+  = render 'shared/sign_in_modal'

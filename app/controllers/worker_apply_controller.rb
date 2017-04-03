@@ -80,4 +80,12 @@ class WorkerApplyController < ApplicationController
     params.require(:worker_apply).require(:documents_attributes).permit(nurse: [], primary_caregiver: [], middle_caregiver: [], high_caregiver: [], standard_caregiver: [], first_add_certificate: [])
   end
 
+  def create_docs(application)
+    doc_params.each do |key, val|
+      val.each do |doc|
+        application.worker_files << WorkerFiles.new(name: doc, doc_type: key)
+      end
+    end
+  end
+
 end

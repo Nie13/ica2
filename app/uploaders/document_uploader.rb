@@ -87,7 +87,7 @@ class DocumentUploader < CarrierWave::Uploader::Base
 
   def get_filename
     worker =  WorkerApply.find(model.worker_id)
-    worker.first_name + client.last_name + "_#{self.model.doc_type}_"
+    worker.first_name + worker.last_name + "_#{self.model.doc_type}_"
   end
 
 end

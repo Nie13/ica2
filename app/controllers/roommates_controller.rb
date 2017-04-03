@@ -2,7 +2,7 @@ class RoommatesController < ApplicationController
   before_action :account_signed_in?, only: [:create, :update, :detroy, :new]
 
   def index
-    sorted_roommates = Roommate.sort_by_created
+    sorted_roommates = Roommate.sort_by_created.first(3)
     roommates =  Kaminari.paginate_array(sorted_roommates)
       .page(params[:page]).per(24)
 
@@ -40,7 +40,7 @@ class RoommatesController < ApplicationController
         @roommate.photos << Photo.find(id) if id.present?
       end
     end
-    if current_account.logined_facebook?
+    if !current_account.logined_facebook?
       if @roommate.save
         flash[:notice] = "已发布新QH服务"
         redirect_to @roommate
@@ -49,7 +49,7 @@ class RoommatesController < ApplicationController
         render :new
       end
     else
-     flash[:alert] = "You must be signed into your facebook account!"
+     flash[:alert] = "sign in needed!"
      render :new
     end
   end
@@ -95,7 +95,7 @@ class RoommatesController < ApplicationController
     email = params[:Email]
     description = params[:Description]
     phone = params[:Phone]
-    subject = "[CitySpade] #{name} is Interested in Being Your Roommate"
+    subject = "#{name} is Interested QH"
     body = "Contact Info:\nName: #{name}\nEmail: #{email}\n"
     if !phone.empty?
       body << "Phone: #{phone}\n"
@@ -105,6 +105,26 @@ class RoommatesController < ApplicationController
     @roommate.update_attributes(contacted: @roommate.contacted + 1)
     flash[:notice] =  "Message sent"
     redirect_to roommate_path params[:roommate_id]
+  end
+
+  def add_to_roommate_cart
+    @roommate = Roommate.find(params[:roommate_id])
+    if current_account.roommate_carted? @roommate
+      reputation = current_account.get_roommate_carted(@roommate)
+      reputation.destroy
+      respond_to do |format|
+        format.html{ redirect_to @roommate, flash: {notice:"discarted"}}
+      end
+    elsif Reputation.where(category: "qhcart", account_id: current_account.id).count != 3
+      Reputation.create({reputable: @roommate, category: 'qhcart', account_id: current_account.id})
+      respond_to do |format|
+        format.html { redirect_to @roommate,flash: {notice: "carted"}}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @roommate,flash: {notice: "cannot cart for more than 3!!!!"}}
+      end
+    end
   end
 
   protected

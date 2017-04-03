@@ -52,12 +52,85 @@ class AccountsController < ApplicationController
       page(params[:page]||1).per(8)
   end
 
+  def room_cart
+    @rooms = Room.active.joins(:reputations).
+      where("reputations.account_id=?",current_account.id).
+      where("reputations.category=?","ltcart").
+      page(params[:page]||1).per(8)
+  end
+
+  def roommate_cart
+    @roommates = Roommate.active.joins(:reputations).
+      where("reputations.account_id=?",current_account.id).
+      where("reputations.category=?","qhcart").
+      page(params[:page]||1).per(8)
+  end
+
+  def room_cart_agreement
+  end
+
+  def room_cart_checkout
+  end
+
+  def purchase_lt
+    if current_account.lt_purchase_state == 0
+      current_account.lt_purchase_state = 1
+      current_account.save
+      redirect_to account_room_cart_agreement_path
+    elsif current_account.lt_purchase_state == 1
+      current_account.lt_purchase_state = 2
+      current_account.save
+      redirect_to account_room_cart_checkout_path
+    elsif current_account.lt_purchase_state == 2
+      current_account.lt_purchase_state = 3
+      current_account.save
+      redirect_to account_room_cart_path, notice: "Successfully purchased"
+    elsif current_account.lt_purchase_state == 3
+      current_account.lt_purchase_state = 4
+      current_account.save
+      redirect_to account_room_cart_path, notice: "wait for refund please"
+    else
+      current_account.lt_purchase_state = 0
+      current_account.save
+      redirect_to account_room_cart_path
+    end
+  end
+
+  def roommate_cart_agreement
+  end
+
+  def roommate_cart_checkout
+  end
+
+  def purchase_qh
+    if current_account.qh_purchase_state == 0
+      current_account.qh_purchase_state = 1
+      current_account.save
+      redirect_to account_roommate_cart_agreement_path
+    elsif current_account.qh_purchase_state == 1
+      current_account.qh_purchase_state = 2
+      current_account.save
+      redirect_to account_roommate_cart_checkout_path
+    elsif current_account.qh_purchase_state == 2
+      current_account.qh_purchase_state = 3
+      current_account.save
+      redirect_to account_roommate_cart_path, notice: "Successfully purchased"
+    elsif current_account.qh_purchase_state == 3
+      current_account.qh_purchase_state = 4
+      current_account.save
+      redirect_to account_roommate_cart_path, notice: "wait for refund please"
+    else
+      current_account.qh_purchase_state = 0
+      current_account.save
+      redirect_to account_roommate_cart_path
+    end
+  end
+
   def my_room_postings
     collection = Room.where(account_id: current_account.id)
     Roommate.where(account_id: current_account.id).each{|r| collection << r}
     all_posts = collection.sort_by(&:created_at).reverse
     @posts = Kaminari.paginate_array(all_posts).page(params[:page]).per(8)
-
   end
 
   def check_facebook_login

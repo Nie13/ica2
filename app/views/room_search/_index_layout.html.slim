@@ -11,8 +11,28 @@
 
 .container-fluid.center.create-new-post-section
   .input-text.triple-input
-    = text_field_tag :available_from, params[:available_from], placeholder: 'available from', class: 'datepicker col-md-5'
-    = text_field_tag :available_to, params[:available_to], placeholder: 'available to', class: 'datepicker col-md-5'
+    = text_field_tag :available_from, params[:available_from], placeholder: 'available from', class: 'datepicker col-md-4'
+    = text_field_tag :available_to, params[:available_to], placeholder: 'available to', class: 'datepicker col-md-4'
+    li.dropdown.auto-drop.hidden-sm
+      a.dropdown-toggle href='#' data-toggle="dropdown"
+        | Sickness
+      ul.dropdown-menu
+        - sicknesses = Settings.account_details["sicknesses"]
+        .col-sm-6
+          - for suckness in sicknesses
+            .li
+              = check_box_tag :sicknesses, suckness, false
+              span = suckness
+    li.dropdown.auto-drop.hidden-sm
+      a.dropdown-toggle href='#' data-toggle="dropdown"
+        | Helps
+      ul.dropdown-menu
+        - helps = Settings.account_details["need_helps"]
+        .col-sm-6
+          - for holp in helps
+            .li
+              = check_box_tag :help, holp, false
+              span = holp
   .searchbtn
     = image_submit_tag("btn-search.jpg", class: "input-class btn-search")
   h2
@@ -40,3 +60,4 @@
 
 javascript:
   App.RoomIndex();
+  App.RoomForm();

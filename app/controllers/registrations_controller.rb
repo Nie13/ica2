@@ -28,7 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
     if request.xhr?
       build_resource(account_params)
       if resource.save
-        binding_review resource
+        #binding_review resource
         if resource.active_for_authentication?
           set_flash_message :notice, :signed_up if is_navigational_format?
           sign_in(resource_name, resource)

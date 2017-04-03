@@ -58,7 +58,7 @@ module CitySpade
 
     config.action_mailer.delivery_method = :ses
 
-    config.action_mailer.default_url_options = {host: 'www.cityspade.com'}
+    config.action_mailer.default_url_options = {host: 'www.xuanfengpao.com'}
     config.assets.precompile += %w(disqus.js markerwithlabel.js infobox.js application-mobile.js application-mobile.css maps/init.js typed.js)
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

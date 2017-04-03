@@ -8,7 +8,7 @@ production:
   database: cityspade_development
   hostname: localhost
   user: root
-  password: 
+  password:
 
 test:
   adapter: mysql2
@@ -20,16 +20,18 @@ test:
 development:
   adapter: mysql2
   database: cityspade_development
-  host: 
-  username:  
-  password: 
+  host:
+  username:
+  password:
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
 
 staging:
   adapter: mysql2
   database: cityspade_staging
   hostname: localhost
-  user: root 
-  password: 
+  user: root
+  password:
 
 
 # Warning: The database defined as "test" will be erased and

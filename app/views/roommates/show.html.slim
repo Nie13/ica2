@@ -103,5 +103,16 @@
         /| n/a
       /- else
         /= @roommate.pets_allowed.join(", ")
+  - if !current_account.nil?
+    .col-xs-6.col-sm-2
+      - if current_account.room_carted? @roommate
+        = button_to add_to_roommate_cart_roommates_path(roommate_id: @roommate.id) do
+          span
+          | already in cart
+      - else
+        = button_to add_to_roommate_cart_roommates_path(roommate_id: @roommate.id) do
+          span
+          | add to cart
+
 
 /= render "room_search/create_post_tiles"

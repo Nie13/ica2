@@ -1,0 +1,37 @@
+#profile.global-container.row
+  .container
+    h1.title CART For QH
+    .row
+      = render partial: '/accounts/sidebar'
+      .col-md-9.row.wishlist-wrapper
+        .wishlist
+          - @roommates.each do |roommate|
+            .row
+              .listing.row
+                /- if room.photos.size == 0
+                  /.col-md-4.listing_img  style="background-image: url('/assets/defauqh.jpg')"
+                /- else
+                  /.col-md-4.listing_img  style="background-image: url(#{room.photos.first.url})"
+                .col-md-8.listing-content
+                  h3
+                    = link_to roommate.title, roommate
+                  /strong
+                    /| #{room.street_address}
+                  br
+                  /strong
+                    /| #{PoliticalArea.find(room.political_area_id).short_name}
+                  strong.pull-right
+                    | 薪资: #{roommate.budget} 元/ 每月
+                    /= number_to_currency(room.price_month, precision: 0)
+                      /| / month
+      = paginate @roommates
+      - if current_account.qh_purchase_state == 0
+        = button_to 'go checkout', accounts_purchase_qh_path, method: :post
+      - elsif current_account.qh_purchase_state == 1
+        = button_to 'read the agreement', accounts_purchase_qh_path, method: :post
+      - elsif current_account.qh_purchase_state == 2
+        = button_to 'Try to re-purchase', accounts_purchase_qh_path, method: :post
+      - elsif current_account.qh_purchase_state == 3
+        = button_to 'ask for refund', accounts_purchase_qh_path, method: :post
+      - elsif current_account.qh_purchase_state == 4
+        = button_to 'waiting for refund', accounts_purchase_qh_path, method: :post
