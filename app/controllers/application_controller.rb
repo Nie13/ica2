@@ -39,8 +39,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :first_name << :last_name << :birth_date 
-    devise_parameter_sanitizer.for(:account_update) << :first_name << :last_name << :image << [:first_phone, :last_phone] << :birth_date << :need_help << :sickness << :start_time << :native_place << :edu_level << :home_address << :fastable << :salary_level
+    devise_parameter_sanitizer.for(:sign_up) << :first_name << :last_name << :birth_date
+    devise_parameter_sanitizer.for(:account_update) << :first_name << :last_name << :image << [:first_phone, :last_phone] << :birth_date << :need_help << :sickness << :start_time << :native_place << :edu_level << :home_address << :fastable << :salary_level << :lt_purchase_state << :qh_purchase_state
   end
   protected :configure_permitted_parameters
 

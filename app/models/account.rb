@@ -80,6 +80,22 @@ class Account < ActiveRecord::Base
     Reputation.where(reputable: target, category: "room", account_id: self.id).first
   end
 
+  def room_carted?(target)
+    get_room_carted(target).present? ? true : false
+  end
+
+  def get_room_carted(target)
+    Reputation.where(reputable: target, category: "ltcart", account_id: self.id).first
+  end
+
+  def roommate_carted?(target)
+    get_room_carted(target).present? ? true : false
+  end
+
+  def get_roommate_carted(target)
+    Reputation.where(reputable: target, category: "qhcart", account_id: self.id).first
+  end
+
   def has_room_postings?
     Room.find_by(account_id: self.id).present? || Roommate.find_by(account_id: self.id).present?
   end

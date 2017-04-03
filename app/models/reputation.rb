@@ -1,5 +1,5 @@
 class Reputation < ActiveRecord::Base
-  Categories = ["collect", "room"]
+  Categories = ["collect", "room", "ltcart", "qhcart"]
 
   belongs_to :reputable, polymorphic: true
   belongs_to :account

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330055435) do
+ActiveRecord::Schema.define(version: 20170402100800) do
 
   create_table "account_inboxes", force: true do |t|
     t.integer  "account_id"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20170330055435) do
     t.string   "home_address"
     t.boolean  "fastable",                          default: false
     t.string   "salary_level"
+    t.integer  "lt_purchase_state",                 default: 0
+    t.integer  "qh_purchase_state",                 default: 0
   end
 
   add_index "accounts", ["api_key"], name: "index_accounts_on_api_key", using: :btree

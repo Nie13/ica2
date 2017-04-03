@@ -4,6 +4,7 @@ CitySpade::Application.routes.draw do
    collection do
      match :send_message, via: [:post, :get]
      match :save_wishlist, via: [:post, :get]
+     match :add_to_room_cart, via: [:post, :get]
      post :expire
    end
   end
@@ -51,7 +52,7 @@ CitySpade::Application.routes.draw do
   #get '/apply' => 'client_apply#new'
   #match '/apply/create' => 'client_apply#create', via: [:get, :post]
   #get '/apply/confirm' => 'client_apply#confirmation'
-  
+
   get '/workerapply' => 'worker_apply#new'
   match '/workerapply/create' => 'worker_apply#create', via: [:get, :post]
   get '/workerapply/confirm' => 'worker_apply#confirmation'
@@ -59,6 +60,7 @@ CitySpade::Application.routes.draw do
   resources :roommates, path: 'qhlists' do
    collection do
      match :send_message, via: [:post, :get]
+     match :add_to_roommate_cart, via: [:post, :get]
      post :expire
    end
   end
@@ -152,6 +154,15 @@ CitySpade::Application.routes.draw do
   get "/account/past-wishlist/for-:flag", to: "accounts#past_wishlist", as: :account_past_wishlist, constraints: CsRoute::Flag
   get "account/room-wishlist", to: "accounts#room_wishlist", as: :account_room_wishlist
   get "account/my-postings", to: "accounts#my_room_postings", as: :account_myrooms
+  get "account/ltcart", to: "accounts#room_cart", as: :account_room_cart
+  get "account/ltcartagreement", to: "accounts#room_cart_agreement", as: :account_room_cart_agreement
+  get "account/ltcartcheckout", to: "accounts#room_cart_checkout", as: :account_room_cart_checkout
+  get "account/qhcart", to: "accounts#roommate_cart", as: :account_roommate_cart
+  get "account/qhcartagreement", to: "accounts#roommate_cart_agreement", as: :account_roommate_cart_agreement
+  get "account/qhcartcheckout", to: "accounts#roommate_cart_checkout", as: :account_roommate_cart_checkout
+
+  post 'accounts/purchase_lt'
+  post 'accounts/purchase_qh'
 
   get '/demo/listings.xml' => 'home#demo'
 
