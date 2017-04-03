@@ -53,7 +53,7 @@ CitySpade::Application.routes.draw do
   #match '/apply/create' => 'client_apply#create', via: [:get, :post]
   #get '/apply/confirm' => 'client_apply#confirmation'
 
-  get '/workerapply' => 'worker_apply#new'
+  get '/workerapply' => 'worker_apply#new', as: :worker_apply
   match '/workerapply/create' => 'worker_apply#create', via: [:get, :post]
   get '/workerapply/confirm' => 'worker_apply#confirmation'
 
