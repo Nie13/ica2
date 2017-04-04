@@ -1,12 +1,15 @@
 .home-banner.container-fluid
-  .heading ICARE, 一切皆为您
+  .heading 优家陪护，优家安心陪伴
   .row#banner-container
     .col-xs-12.col-sm-6
-      = link_to "寻找陪护"
+      = link_to "寻找陪护", rooms_path
 
 
     .col-xs-12.col-sm-6
-      = link_to "成为陪护"
+      - if current_account.nil?
+        = link_to "成为陪护", "/accounts/sign_up"
+      - else
+        = link_to "成为陪护", worker_apply_path
 
 /  #sp-banner-wrapper
 /    .row#banner
@@ -34,7 +37,12 @@
 .home-searchforme.container-fluid
   h1 I-CARE的“一键到家”功能提供短期定制化专业陪护服务，成为I-CARE会员，即可免匹配费不限次数使用“一键到家”服务。
   /= link_to "查看详情", alllists_path
-  = link_to "查看详情", alllists_path
+  = link_to "查看详情", roommates_path
+
+.home-searchforme.container-fluid
+  h1 I-CARE提供针对阿尔兹海默和糖尿病的护理培训
+  /= link_to "查看详情", alllists_path
+  = link_to "查看详情", rooms_path
 
 /.home-contact.container-fluid
 /  = render "home_contact"
