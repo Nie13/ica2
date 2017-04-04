@@ -4,6 +4,7 @@ gem 'rails', '4.1.4'
 gem 'rails-observers'
 gem 'sass-rails'
 gem 'compass-rails', '~> 2.0.2'
+gem 'rake', '< 11.0'
 
 gem 'bootstrap-sass'
 # use uploadify instead
@@ -91,7 +92,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'spring'
+  gem 'spring', '~> 1.4.0'
   ## rails/ruby style check
   gem 'brakeman', :require => false
   gem 'rails_best_practices', :require => false
@@ -107,7 +108,7 @@ end
 gem 'puma', '2.11.0'
 # paginator https://github.com/amatsuda/kaminari
 gem 'kaminari'
-gem 'devise'
+gem 'devise', '~> 3.5.2'
 gem 'nokogiri', '~> 1.6.6'
 gem 'rest-client'
 # amazon ses service
@@ -138,7 +139,8 @@ gem 'bcrypt'
 # gem 'progress_bar'
 
 # https://github.com/lassebunk/dynamic_sitemaps
-gem 'dynamic_sitemaps', github: 'lassebunk/dynamic_sitemaps', ref: ' 37bee'
+gem 'dynamic_sitemaps'
+#, github: 'lassebunk/dynamic_sitemaps', ref: ' 37bee'
 # Use unicorn as the app server
 # gem 'unicorn'
 

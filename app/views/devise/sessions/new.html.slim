@@ -1,6 +1,6 @@
-.row-fluid#signin.global-container
+.row-fluid#container
   .container
-    h1.custom-title.title Sign In to CitySpade
+    h1.custom-title.title Sign In to Icare
     .signin-box.row
       .left-column.pull-left
         = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
@@ -14,17 +14,17 @@
               = link_to 'Forgot password?', new_account_password_path , class: 'pull-right forget-pw'
             .submit_log_in.pull-left
               = f.submit "Log in", class: 'btn-custom sign-btn'
-            .fb_log_in.pull-right
-              = link_to account_omniauth_authorize_path(:facebook) do
-                img src=asset_path('facebookbutton.jpg')
+            /.fb_log_in.pull-right
+              /= link_to account_omniauth_authorize_path(:facebook) do
+                /img src=asset_path('facebookbutton.jpg')
           end
       .right-column.pull-left
         h3.custom-title.signin-notice Not A Member Yet?
-        = link_to account_omniauth_authorize_path(:facebook) do
-          img src=asset_path('facebook_icon.jpg')
+        /= link_to account_omniauth_authorize_path(:facebook) do
+          /img src=asset_path('facebook_icon.jpg')
         br
         .signup-direct
           span
-            | or,
+            | to sign up
             '
           = link_to "Sign up with email", new_account_registration_path, class: "sign-up-email"

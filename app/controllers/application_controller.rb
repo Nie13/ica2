@@ -1,4 +1,3 @@
-
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -128,7 +127,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    session[:redirect_to] || request.env['omniauth.origin'] || stored_location_for(resource_or_scope) || search_path
+    session[:redirect_to] || request.env['omniauth.origin'] || stored_location_for(resource_or_scope)  
   end
   def current_user
     current_account

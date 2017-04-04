@@ -4,20 +4,21 @@ class AccountsController < ApplicationController
   before_action :require_office_account, only: [:listings]
   def show
     if current_account.present?
-      @listings = Listing.joins(:reputations).
-        where("reputations.account_id = ?", current_account.id).
-        page(params[:page]||1).per(8)
+      #@listings = Listing.joins(:reputations).
+        #where("reputations.account_id = ?", current_account.id).
+        #page(params[:page]||1).per(8)
+      redirect_to edit_account_path
     else
       redirect_to new_account_session_path
     end
   end
 
   def listings
-    if params[:status] == Settings.listing_status.actived
-      @listings = current_account.listings.where(status: [0, -1])
-    else
-      @listings = current_account.listings.expired
-    end
+    #if params[:status] == Settings.listing_status.actived
+      #@listings = current_account.listings.where(status: [0, -1])
+    #else
+      #@listings = current_account.listings.expired
+    #end
   end
 
   def verify_office
