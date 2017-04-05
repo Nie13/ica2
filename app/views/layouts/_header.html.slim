@@ -25,14 +25,13 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
               span
                 span 登录
         - else
-          li
-            | 您好
           li.dropdown.auto-drop.hidden-xs
-            a.dropdown-toggle href='#' data-toggle="dropdown"
-              = image_tag current_account.small_image_url,
-                  class: 'circle avatar-40',
-                  alt: current_account.name,
-                  title: current_account.name
+            a.dropdown-toggle href='#' data-toggle="dropdown" label="您好"
+              /= image_tag current_account.small_image_url,
+                  /class: 'circle avatar-40',
+                  /alt: current_account.name,
+                  /title: current_account.name
+              | 您好, #{current_account.name}
             ul.dropdown-menu
               li
                 a href=account_saved_wishlist_path(flag: Settings.listing_flags.rental)
