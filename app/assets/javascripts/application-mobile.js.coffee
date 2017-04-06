@@ -13,7 +13,6 @@
 #= require common
 #= require mobiles/mobile_search
 #= require mobiles/mobile_review
-#= require olark_instant
 
 $ ->
   App.init()

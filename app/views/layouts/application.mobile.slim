@@ -28,15 +28,15 @@ html
           = image_tag "logo/B-logo2.png", class: "brand"
         button.btn.navbar-btn.pull-right type='button' data-toggle='collapse' data-target='.navbar-collapse'
         .navbar-collapse.collapse
-          ul.nav
+          ul.navbar
             li
               = link_to "联系我们", alllists_path
             - unless current_account
               li
-                /= link_to '登录', new_session_path(resource_name)
-                a.sign-in href='#' data-toggle="modal" data-target= "#sign_in"
-                  span
-                    span 登录
+                = link_to '登录', new_session_path(resource_name)
+                /a.sign-in href='#' data-toggle="modal" data-target= "#sign_in"
+                  /span
+                    /span 登录
             - else
                li
                  = link_to '设置', edit_account_path
