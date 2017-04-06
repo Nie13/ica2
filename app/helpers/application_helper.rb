@@ -307,7 +307,7 @@ module ApplicationHelper
     when 'twitter'
       "https://twitter.com/share?url=#{full_url}&text=#{@listing.try(:title) || @blog.try(:title)}"
     when 'pinterest'
-      "http://pinterest.com/pin/create/button/?url=#{full_url}&media=#{@listing.try(:image_url,'300X246') || asset_url('default_blog.jpg')}"
+      "http://pinterest.com/pin/create/button/?url=#{full_url}&media=#{@listing.try(:image_url,'300X246') || asset_url('ica2-icon.jpg')}"
     else
       '#'
     end

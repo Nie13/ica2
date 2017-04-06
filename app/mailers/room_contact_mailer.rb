@@ -14,7 +14,7 @@ class RoomContactMailer < ActionMailer::Base
 
   def dealmoon_reply(name, email)
     @name = name
-    attachments.inline['logo.png'] = File.read("#{Rails.root}/app/assets/images/logo/City-logo2.png")
+    attachments.inline['logo.png'] = File.read("#{Rails.root}/app/assets/images/logo/logo2.png")
     attachments.inline['qrcode.png'] = File.read("#{Rails.root}/app/assets/images/mail/city-qrcode.png")
     mail from: "vvlll2flri@outlook.com", to: email, subject: "CitySpade租房咨询回复"
   end
