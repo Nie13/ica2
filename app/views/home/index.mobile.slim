@@ -1,25 +1,27 @@
 .row.nearby-search-row
   .half.nearby-search
-    = link_to "Nearby Apartments", 'javascript:void(0);', data:{url: search_path}
+    = link_to "寻找陪护", 'javascript:void(0);', data:{url: rooms_path}
   .half.nearby-search
-    = link_to "Nearby Reviews", 'javascript:void(0);', data: {url: result_reviews_path}
-  /- render_cities_btn do |city_long_name, city, index|
-    .third.current-area-link class="#{index == 0 ? 'third-left' : (index == Settings.cities.size - 1 ? 'third-right' : nil)}"
-      = link_to "#{city_long_name}", "?current_area=#{city['long_name'].to_url}", class: "#{current_area.long_name == city['long_name'] ? 'update-active' : nil}"
-#mb-banner-search class="#{search_review? ? 'for-search-review' : 'for-search-listing'}"
-  = form_for Listing.new, url: (search_review? ? result_reviews_path : area_index_search_path(current_area: current_area.long_name.to_url)), \
-  data: {sl: search_path, sr: result_reviews_path}, method: :get do |f|
-    = render partial: 'search/search_input', locals: {f: f }
+    - if current_account.nil?
+      = link_to "成为陪护", 'javascript:void(0);', data: {url: "/accounts/sign_up"}
+    - else
+      = link_to "成为陪护", 'javascript:void(0);', data: {url: worker_apply_path}
+  //- render_cities_btn do |city_long_name, city, index|
+    /.third.current-area-link class="#{index == 0 ? 'third-left' : (index == Settings.cities.size - 1 ? 'third-right' : nil)}"
+      /= link_to "#{city_long_name}", "?current_area=#{city['long_name'].to_url}", class: "#{current_area.long_name == city['long_name'] ? 'update-active' : nil}"
+/#mb-banner-search class="#{search_review? ? 'for-search-review' : 'for-search-listing'}"
+  /= form_for Listing.new, url: (search_review? ? result_reviews_path : area_index_search_path(current_area: current_area.long_name.to_url)), \
+  /data: {sl: search_path, sr: result_reviews_path}, method: :get do |f|
+    /= render partial: 'search/search_input', locals: {f: f }
 
-.home-flashsales.container-fluid
-  h2.center DAILY DEALS
-  = render "newhome1_flashsales"
+/.home-flashsales.container-fluid
+  /h2.center DAILY DEALS
+  /= render "newhome1_flashsales"
 
 .home-searchforme.container-fluid
-  h1 Let us help you find the best deals.
-  = link_to "GET STARTED", new_search_for_me_path
+  h1 为您匹配最合适的短期护工
+  = link_to "一键到家", roommates_path
 
-.home-contact.container-fluid
-  = render "home_contact"
-
-
+.home-searchforyou.container-fluid
+  h1 优家提供专业护理培训
+  = link_to "查看详情", rooms_path
