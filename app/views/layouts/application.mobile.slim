@@ -19,13 +19,13 @@ html
     = javascript_include_tag "application-mobile"
     = csrf_meta_tags
     = render_link_canonical
-    link href=asset_path("city-fav.png") rel="shortcut icon"
+    link href=asset_path("ica2fav.png") rel="shortcut icon"
   body
     #mb-navbar.navbar.nav-inverse.navbar-fixed-top
       .container-fluid
       .navbar-inner
         = link_to root_path do
-          = image_tag "logo/B-City-logo2.png", class: "brand"
+          = image_tag "logo/B-logo2.png", class: "brand"
         button.btn.navbar-btn.pull-right type='button' data-toggle='collapse' data-target='.navbar-collapse'
         .navbar-collapse.collapse
           ul.nav
@@ -49,7 +49,7 @@ html
     = yield
     #mb-footer
       = link_to root_path do
-        = image_tag "logo/B-City-logo2.png", class: "brand center-block"
+        = image_tag "logo/B-logo2.png", class: "brand center-block"
       p Spot your next move
       em &copy;2015 CitySpade
 

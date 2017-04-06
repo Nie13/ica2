@@ -10,14 +10,25 @@
   text-align: center
   padding-top: 100px
   font-family: 'Avenir'
-  background-size: 100%
-  background-color: #a2b700
+  background-size: cover
+  background-image: linear-gradient(to bottom, rgba(225,225,225, 0.3), rgba(225,225,225, 0.3)), image-url('bgimg/gk147.jpg')
+  //background-color: #a2b700
 
 
   .heading
     letter-spacing: -3px
     font-size: 5em
     font-family: 'Avenir Book'
+    color: #cb742a
+    margin-bottom: 10vh
+
+  .link_tag
+    color: $link-color
+    font-size: 22px
+    border: 2px solid $link-color
+    padding: 10px
+    font-family: Avenir
+    letter-spacing: 0.03em
 
   #sp-banner-wrapper #banner.row .row#banner-container
     top: 285px
@@ -28,8 +39,8 @@
     input[type="checkbox"] + label, input[type="radio"] + label
       color: white
 
-    .listing-flag input[type='radio']
-      border: 2px solid white
+    //.listing-flag input[type='radio']
+      //border: 2px solid white
 
 .home-flashsales
   padding-top: 20px
@@ -162,10 +173,42 @@
   text-align: center
   padding-top: 50px
   padding-bottom: 50px
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-url('bgimg/rooftop-back.jpg')
+  background-image: linear-gradient(to bottom, rgba(225,225,225, 0.3), rgba(225,225,225, 0.3)), image-url('bgimg/16002.jpg')
+  background-size: cover
   h1
     margin-bottom: 30px
-    font-size: 16px
+    font-size: 1.5em
+
+    @media (max-width: 768px)
+      font-size: 16px
+  h2
+    margin-top: 30vh
+    margin-bottom: 30px
+    font-size: 1.5em
+    @media (max-width: 768px)
+      font-size: 16px
+  a
+    color: $link-color
+    font-size: 22px
+    border: 2px solid $link-color
+    padding: 10px
+    font-family: Avenir
+    letter-spacing: 0.03em
+
+.home-searchforyou
+  background: #f3f3f4
+  //min-height: 588px
+  height: 100vh
+  //height: 100%
+  text-align: center
+  padding-top: 50px
+  padding-bottom: 50px
+  background-image: linear-gradient(to bottom, rgba(225,225,225, 0.3), rgba(225,225,225, 0.3)), image-url('bgimg/decoration.jpg')
+  background-size: cover
+  h1
+    margin-top: 30vh
+    margin-bottom: 30px
+    font-size: 1.5em
     @media (max-width: 768px)
       font-size: 16px
   a

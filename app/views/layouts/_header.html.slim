@@ -1,5 +1,5 @@
 - home_transparent = current_page?(root_path) ? "transparent-nav" : ""
-- logo_file = current_page?(root_path) ? "logo/B-City-logo2.png" : "logo/City-logo2.png"
+- logo_file = current_page?(root_path) ? "logo/B-logo2.png" : "logo/logo2.png"
 
 nav.navbar.navbar-static-top class="#{home_transparent}"
   .container-fluid
@@ -10,7 +10,7 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
         span.icon-bar
       = link_to root_path do
         = image_tag logo_file, height: "50px", class: "city_logo hidden-xs"
-        = image_tag "logo/B-City-logo2.png", height: "50px", class:"city_logo visible-xs"
+        = image_tag "logo/B-logo2.png", height: "50px", class:"city_logo visible-xs"
 
     .collapse.navbar-collapse#main-Navbar
       ul.nav.navbar-nav.navbar-right
@@ -25,14 +25,13 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
               span
                 span 登录
         - else
-          li
-            | 您好
           li.dropdown.auto-drop.hidden-xs
-            a.dropdown-toggle href='#' data-toggle="dropdown"
-              = image_tag current_account.small_image_url,
-                  class: 'circle avatar-40',
-                  alt: current_account.name,
-                  title: current_account.name
+            a.dropdown-toggle href='#' data-toggle="dropdown" label="您好"
+              /= image_tag current_account.small_image_url,
+                  /class: 'circle avatar-40',
+                  /alt: current_account.name,
+                  /title: current_account.name
+              | 您好, #{current_account.name}
             ul.dropdown-menu
               li
                 a href=account_saved_wishlist_path(flag: Settings.listing_flags.rental)
