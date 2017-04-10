@@ -2,7 +2,7 @@
 - logo_file = current_page?(root_path) ? "logo/B-logo2.png" : "logo/logo2.png"
 
 nav.navbar.navbar-static-top class="#{home_transparent}"
-  .container-fluid
+  .container-fluid style = "margin-left:20px;margin-right:20px"
     .navbar-header
       button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-Navbar"
         span.icon-bar
@@ -16,7 +16,6 @@ nav.navbar.navbar-static-top class="#{home_transparent}"
       ul.nav.navbar-nav.navbar-right
         li
           = link_to "联系我们", alllists_path, class: 'nav-button'
-          /= link_to "联系我们", alllists_path, class: 'nav-button'
 
         - if current_account.nil?
           li

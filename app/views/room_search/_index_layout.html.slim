@@ -10,29 +10,69 @@
   link_hash: link_hash
 
 .container-fluid.center.create-new-post-section
-  .input-text.triple-input
-    = text_field_tag :available_from, params[:available_from], placeholder: 'available from', class: 'datepicker col-md-4'
-    = text_field_tag :available_to, params[:available_to], placeholder: 'available to', class: 'datepicker col-md-4'
-    li.dropdown.auto-drop.hidden-sm
-      a.dropdown-toggle href='#' data-toggle="dropdown"
-        | Sickness
-      ul.dropdown-menu
-        - sicknesses = Settings.account_details["sicknesses"]
-        .col-sm-6
-          - for suckness in sicknesses
-            .li
-              = check_box_tag :sicknesses, suckness, false
-              span = suckness
-    li.dropdown.auto-drop.hidden-sm
-      a.dropdown-toggle href='#' data-toggle="dropdown"
-        | Helps
-      ul.dropdown-menu
-        - helps = Settings.account_details["need_helps"]
-        .col-sm-6
-          - for holp in helps
-            .li
-              = check_box_tag :help, holp, false
-              span = holp
+
+  .input-text.col-md-12
+    = text_field_tag :available_from, params[:available_from], placeholder: "开始时间", class: 'datepicker col-md-4'
+    = text_field_tag :available_to, params[:available_to], placeholder: "结束时间", class: 'datepicker col-md-4'
+
+  .box.col-md-12
+     legend
+       | 疾病
+     .row
+       .col-md-12
+         .cell.col-md-2
+           | 初级疾病
+         - sicknesses = Settings.account_details["l1_sicks"]
+         .form-group.col-md-10
+           - for suckness in sicknesses
+             .options.col-md-3
+               = check_box_tag :sicknesses, suckness, false
+               span = suckness
+     .row
+       .col-md-12
+         .cell.col-md-2
+           | 中级疾病
+         - sicknesses = Settings.account_details["l2_sicks"]
+         .form-group.col-md-10
+           - for suckness in sicknesses
+               .options.col-md-3
+                 = check_box_tag :sicknesses, suckness, false
+                 span = suckness
+     .row
+       .col-md-12
+         .cell.col-md-2
+           | 高级疾病
+         - sicknesses = Settings.account_details["l3_sicks"]
+         .form-group.col-md-10
+           - for suckness in sicknesses
+             .options.col-md-3
+               = check_box_tag :sicknesses, suckness, false
+               span = suckness
+     legend
+       | 护理
+     .row
+       .col-md-12
+         .cell.col-md-2
+           | 基本护理
+         - helps = Settings.account_details["basic_helps"]
+         .form-group.col-md-10
+           - for holp in helps
+             .options.col-md-3
+               = check_box_tag :helps, holp, false
+               span = holp
+     .row
+       .col-md-12
+         .cell.col-md-2
+           | 专业护理
+         - helps = Settings.account_details["adv_helps"]
+         .form-group.col-md-10
+           - for holp in helps
+             .options.col-md-3
+               = check_box_tag :helps, holp, false
+               span = holp
+
+
+
   .searchbtn
     = image_submit_tag("btn-search.jpg", class: "input-class btn-search")
   h2

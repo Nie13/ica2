@@ -41,7 +41,7 @@ CitySpade::Application.routes.draw do
 
   #get '/roomsearch', to: 'room_search#index'
   get '/alllists', to: 'room_search#index'
-
+  get '/train', to: 'trains#index', as: :train
   #resources :room_search, path: "alllists" do
   #end
 

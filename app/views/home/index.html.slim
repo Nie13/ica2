@@ -1,5 +1,8 @@
 .home-banner.container-fluid
-  .heading 优家陪护，优家安心陪伴
+  .heading style = "margin-bottom:0px"
+    | 优家陪护
+  .heading style = "font-size:3.8em;margin-top:0px"
+    | 优选安心陪伴
   .row#banner-container
     .col-xs-12.col-sm-6
       = link_to "寻找陪护", rooms_path,
@@ -47,7 +50,7 @@
 .home-searchforyou.container-fluid
   h1 优家提供针对阿尔兹海默和糖尿病的护理培训
   /= link_to "查看详情", alllists_path
-  = link_to "查看详情", rooms_path
+  = link_to "查看详情", train_path
 
 /.home-contact.container-fluid
 /  = render "home_contact"

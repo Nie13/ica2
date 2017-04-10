@@ -40,7 +40,7 @@ class RoomForm
 class RoomIndex
   constructor: ->
     @tooltipInit()
-    @datePicker()
+    #@datePicker()
 
   tooltipInit: ->
     # Bootstrap Tooltip
