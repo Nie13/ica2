@@ -10,14 +10,14 @@ class RoomsController < ApplicationController
 
     link_hash = {
       "所有服务列表" => alllists_path,
-      "QH服务列表" => roommates_path
+      "一键到家" => roommates_path
     }
 
     render "room_search/_index_layout",
       locals: {
         total_post_count: sorted_rooms.count,
         posts: rooms,
-        heading: "获取所有的LT服务列表",
+        heading: "长期陪护列表",
         new_path: new_room_path,
         link_hash: link_hash
       }

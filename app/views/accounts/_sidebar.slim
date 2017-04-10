@@ -7,11 +7,11 @@ ul.side-bar.col-md-3
   - if current_account.role == 'worker'
     = nav_link '我的发布', account_myrooms_path
   -else
-    = nav_link 'apply to be worker', worker_apply_path
+    = nav_link '申请成为护工', worker_apply_path
   = nav_link '心愿单', account_room_wishlist_path
   = nav_link '帐户设置', edit_account_path
-  = nav_link 'carted lt', account_room_cart_path
-  = nav_link 'carted qh', account_roommate_cart_path
+  = nav_link '购物车 长期陪护', account_room_cart_path
+  = nav_link '购物车 一键到家', account_roommate_cart_path
   li class="#{controller_name == 'inboxes'?  'current' : nil}"
     = link_to inboxes_path, class: 'inbox' do
       | 优家消息

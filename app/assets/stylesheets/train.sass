@@ -1,0 +1,55 @@
+@import 'modules'
+@import "compass/css3/border-radius"
+
+// styles applied to trains
+.train-index-header
+  background: url(asset-path("GK095.jpg"))
+  background-position: center bottom
+  background-size: cover
+  border-radius: 0
+  color: white
+  margin-bottom: 0
+
+  @media (screen and max-width: 600px)
+    padding: 10px
+    padding-bottom: 60px
+
+  .header-btn-wrapper
+    width: 400px
+
+    @media (screen and max-width: 600px)
+      width: auto
+
+  .header-index-btn
+    color: white
+    background: transparent
+    border: 2px solid white
+    font-family: 'Avenir'
+    padding: 10px
+    display: inline-block
+    width: 150px
+    margin-top: 50px
+
+    &:hover
+      text-decoration: none
+      color: $link-color
+      border: 2px solid $link-color
+
+.train-btn.btn
+  border: 1px solid black
+  font-family: 'Avenir', sans-serif
+  background: #c5da01
+  height: 35px
+  padding-top: 5px
+  font-size: 1.2em
+  font-family: 'Avenir', sans-serif
+
+  &.letter-spaced
+    letter-spacing: 2px
+
+  &:hover
+    background-color: #E6E6E6
+
+.train-detail-section
+  padding-top: 20px
+  padding-bottom: 20px

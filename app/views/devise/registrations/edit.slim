@@ -57,42 +57,42 @@
                   | Currently waiting confirmation for:
                   = resource.unconfirmed_email
 
-              = f.fields_for :account, current_account do |ca|
-                .form-group
-                  - if current_account.role == 'worker'
-                    label 我会照顾的常见疾病
-                  - else
-                    label 常见疾病
-                  br
+              /= f.fields_for :account, current_account do |ca|
+                /.form-group
+                  /- if current_account.role == 'worker'
+                    /label 我会照顾的常见疾病
+                  /- else
+                    /label 常见疾病
+                  /br
 
-                  - sicknesses = Settings.account_details["sicknesses"]
-                  .row
-                    - for suckness in sicknesses
-                      .col-sm-12
-                        div.aligned-checklist
-                          label
-                            - is_checked = current_account.sickness.empty? ? false : current_account.sickness.include?(suckness)
-                            = check_box_tag "account[sickness][]", suckness, is_checked
-                            span.styled-checkbox
-                            = suckness
+                  /- sicknesses = Settings.account_details["sicknesses"]
+                  /.row
+                    /- for suckness in sicknesses
+                      /.col-sm-12
+                        /div.aligned-checklist
+                          /label
+                            /- is_checked = current_account.sickness.empty? ? false : current_account.sickness.include?(suckness)
+                            /= check_box_tag "account[sickness][]", suckness, is_checked
+                            /span.styled-checkbox
+                            /= suckness
 
-                .form-group
-                  - if current_account.role == 'worker'
-                    label 我可以提供的帮助类型
-                  - else
-                    label 需要帮助类型
-                  br
+                /.form-group
+                  /- if current_account.role == 'worker'
+                    /label 我可以提供的帮助类型
+                  /- else
+                    /label 需要帮助类型
+                  /br
 
-                  - need_helps = Settings.account_details["need_helps"]
-                  .row
-                    - for need_holp in need_helps
-                      .col-sm-12
-                        div.aligned-checklist
-                          label
-                            - is_checkeed = current_account.need_help.empty? ? false : current_account.need_help.include?(need_holp)
-                            = check_box_tag 'account[need_help][]', need_holp, is_checkeed
-                            span
-                            = need_holp
+                  /- need_helps = Settings.account_details["need_helps"]
+                  /.row
+                    /- for need_holp in need_helps
+                      /.col-sm-12
+                        /div.aligned-checklist
+                          /label
+                            /- is_checkeed = current_account.need_help.empty? ? false : current_account.need_help.include?(need_holp)
+                            /= check_box_tag 'account[need_help][]', need_holp, is_checkeed
+                            /span
+                            /= need_holp
 
 
 
