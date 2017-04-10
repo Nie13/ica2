@@ -23,7 +23,7 @@ defaults: &defaults
   aws:
     access_key_id: ''
     secret_access_key: ''
-    s3_bucket: "cityspade-<%= Rails.env %>"
+    s3_bucket: "ica2-<%= Rails.env %>"
     email_address: 'vvlll2flri@outlook.com'
   omniauth:
     #facebook_id: '334936550181312'
@@ -545,7 +545,7 @@ defaults: &defaults
       - "协助测量血糖"
       - "胰岛素笔的使用"
       - "局部放松按摩"
-      - "压疮的护理"      
+      - "压疮的护理"
 
 development:
   <<: *defaults

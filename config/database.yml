@@ -20,7 +20,7 @@ test:
 development:
   adapter: mysql2
   database: cityspade_development
-  host:
+  host: localhost
   username:
   password:
   encoding: utf8mb4
